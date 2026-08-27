@@ -1,0 +1,38 @@
+name: Monthly Access Audit
+
+on:
+  schedule:
+    # Runs at 10:00 UTC on the 2nd of every month (day after skills update)
+    - cron: "0 10 2 * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run — list stale members without removing them"
+        type: boolean
+        default: true
+
+jobs:
+  audit:
+    name: Audit GitHub Org vs Active Subscriptions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install httpx stripe
+
+      - name: Run access audit
+        env:
+          GITHUB_TOKEN:   ${{ secrets.REPO_ADMIN_TOKEN }}
+          GITHUB_OWNER:   henkietenki
+          GITHUB_REPO:    aikit-pro-skills
+          STRIPE_SECRET:  ${{ secrets.STRIPE_SECRET_KEY }}
+          DRY_RUN:        ${{ inputs.dry_run || 'false' }}
+        run: python scripts/access_audit.py

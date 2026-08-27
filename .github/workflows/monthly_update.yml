@@ -1,0 +1,67 @@
+name: Monthly Skills Update
+
+on:
+  schedule:
+    # Runs at 09:00 UTC on the 1st of every month
+    - cron: "0 9 1 * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run — show what would change without committing"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  update-skills:
+    name: Refresh AI Skills Library
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install update tools
+        run: pip install httpx pyyaml
+
+      - name: Run skills curator
+        env:
+          ANTHROPIC_DOCS_TOKEN: ${{ secrets.ANTHROPIC_DOCS_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run || 'false' }}
+        run: python scripts/curate_skills.py
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet skills/ && echo "changed=false" >> "$GITHUB_OUTPUT" \
+            || echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit updated skills
+        if: steps.changes.outputs.changed == 'true' && inputs.dry_run != true
+        run: |
+          git config user.name  "AIKit Bot"
+          git config user.email "bot@aikit.originforge.net"
+          git add skills/
+          git commit -m "chore: monthly skills update $(date '+%Y-%m')"
+          git push
+
+      - name: Tag release
+        if: steps.changes.outputs.changed == 'true' && inputs.dry_run != true
+        run: |
+          TAG="skills-$(date '+%Y-%m')"
+          git tag "$TAG"
+          git push origin "$TAG"
+
+      - name: Notify (no changes)
+        if: steps.changes.outputs.changed == 'false'
+        run: echo "Skills are already up to date — no commit needed."

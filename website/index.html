@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIKit Pro — Claude Code, Professionally Configured</title>
+<meta name="description" content="One command installs Claude Code with 30+ professional skills, auto-configured settings, and monthly updates. No manual setup, no guesswork.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23B5722A'/><text x='16' y='23' font-size='18' font-family='Georgia,serif' font-weight='800' fill='white' text-anchor='middle'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<meta property="og:title" content="AIKit Pro — Claude Code, Professionally Configured">
+<meta property="og:description" content="One command installs Claude Code with 30+ professional skills and monthly updates.">
+<meta property="og:url" content="https://aikit.originforge.net">
+<meta property="og:type" content="website">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:    #F5F2EC;
+  --paper2:   #EDE9E1;
+  --paper3:   #E4DED5;
+  --ink:      #1a1108;
+  --ink2:     #3d2e18;
+  --muted:    #7a6a54;
+  --dim:      #a8947a;
+  --border:   rgba(26,17,8,0.10);
+  --amber:    #B5722A;
+  --amber-h:  #9A5F22;
+  --amber-dim:rgba(181,114,42,0.10);
+  --amber-glow:rgba(181,114,42,0.06);
+  --dark-bg:  #1c1308;
+  --dark-bg2: #251a0b;
+  --dark-bg3: #2e2110;
+  --dark-border:rgba(245,242,236,0.08);
+  --dark-text: #F5F2EC;
+  --dark-muted:#a89070;
+  --serif:    'DM Serif Display', Georgia, serif;
+  --sans:     'DM Sans', system-ui, sans-serif;
+  --mono:     'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── GRAIN ── */
+body::after {
+  content: '';
+  position: fixed; inset: -50%;
+  width: 200%; height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.032; pointer-events: none; z-index: 9999;
+}
+
+/* ── SCROLL PROGRESS ── */
+#scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--amber) 0%, #e8a84c 50%, #c5883a 100%);
+  transform: scaleX(0); transform-origin: left;
+  z-index: 999; will-change: transform;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 62px;
+  background: rgba(245,242,236,0.88);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.logo {
+  font-family: var(--serif); font-size: 19px; font-style: italic;
+  color: var(--ink); text-decoration: none;
+  display: flex; align-items: center; gap: 10px; letter-spacing: -0.01em;
+}
+.logo-mark {
+  width: 28px; height: 28px;
+  background: var(--amber); border-radius: 6px;
+  display: grid; place-items: center;
+  font-size: 14px; font-weight: 800; color: var(--paper);
+  font-family: var(--serif); letter-spacing: 0;
+  flex-shrink: 0; font-style: normal;
+}
+.logo span { color: var(--amber); }
+nav ul { display: flex; gap: 28px; list-style: none; align-items: center; }
+nav ul a {
+  color: var(--muted); text-decoration: none; font-size: 13px;
+  font-weight: 500; transition: color 0.2s; position: relative;
+}
+nav ul a:not(.nav-cta):hover { color: var(--ink); }
+nav ul a.active { color: var(--ink); }
+nav ul a:not(.nav-cta).active::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 100%; height: 1px; background: var(--amber);
+}
+.nav-cta {
+  background: var(--ink); color: var(--paper) !important;
+  font-weight: 700 !important; font-size: 13px !important;
+  padding: 8px 18px; border-radius: 6px; transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.8 !important; }
+
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 100px 48px 80px;
+  background: var(--paper);
+  overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(26,17,8,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 80% 60% at 35% 40%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 35% 40%, black 20%, transparent 100%);
+  pointer-events: none;
+}
+.h-glow { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(80px); }
+.h-glow-1 { width:700px; height:700px; background:radial-gradient(circle, rgba(181,114,42,0.07), transparent 70%); top:-10%; left:-15%; will-change:transform; }
+.h-glow-2 { width:400px; height:400px; background:radial-gradient(circle, rgba(181,114,42,0.04), transparent 70%); bottom:5%; right:5%; will-change:transform; }
+
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center; max-width: 1200px;
+  margin: 0 auto; width: 100%; position: relative; z-index: 1;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(181,114,42,0.25); border-radius: 100px;
+  padding: 5px 14px; background: var(--amber-dim);
+  font-size: 11px; color: var(--amber); letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: 28px;
+  font-weight: 600;
+  animation: float-badge 5s ease-in-out infinite;
+}
+@keyframes float-badge { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
+.badge-dot { width:6px; height:6px; background:var(--amber); border-radius:50%; animation:pulse-amber 2s ease-in-out infinite; }
+@keyframes pulse-amber { 0%,100%{box-shadow:0 0 0 0 rgba(181,114,42,0.5)} 50%{box-shadow:0 0 0 5px rgba(181,114,42,0)} }
+
+.hero h1 {
+  font-family: var(--serif); font-size: clamp(44px,6vw,80px);
+  font-weight: 400; letter-spacing: -0.03em; line-height: 0.95;
+  color: var(--ink); margin-bottom: 24px;
+}
+.hero h1 em { font-style: italic; color: var(--amber); }
+.hero-sub { font-size: 17px; color: var(--muted); max-width: 420px; margin-bottom: 36px; line-height: 1.75; }
+.hero-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 40px; }
+.btn-primary {
+  background: var(--amber); color: var(--paper); font-weight: 700; font-size: 14px;
+  padding: 13px 24px; border-radius: 8px; text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s; letter-spacing: -0.01em;
+  cursor: pointer; border: none; font-family: var(--sans);
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-ghost {
+  color: var(--muted); font-size: 14px; text-decoration: none;
+  padding: 13px 20px; transition: color 0.2s; font-weight: 500;
+}
+.btn-ghost:hover { color: var(--ink); }
+
+.hero-stats { display: flex; gap: 28px; align-items: center; }
+.hs { display: flex; flex-direction: column; gap: 2px; }
+.hs-num { font-size: 20px; font-weight: 700; color: var(--ink); letter-spacing: -0.04em; line-height: 1; font-family: var(--serif); }
+.hs-num span { color: var(--amber); }
+.hs-label { font-size: 10px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.hs-divider { width: 1px; height: 24px; background: var(--border); }
+
+/* Terminal hero */
+.terminal-float {
+  position: relative; z-index: 1;
+  animation: float-term 8s ease-in-out infinite;
+}
+@keyframes float-term { 0%,100%{filter:drop-shadow(0 32px 60px rgba(26,17,8,0.2))} 50%{filter:drop-shadow(0 44px 80px rgba(26,17,8,0.28))} }
+.terminal-float::before {
+  content: ''; position: absolute; inset: -60px;
+  background: radial-gradient(ellipse, rgba(181,114,42,0.06), transparent 65%);
+  pointer-events: none; filter: blur(40px);
+}
+.term-window {
+  background: var(--dark-bg); border-radius: 14px; overflow: hidden;
+  box-shadow: 0 32px 80px rgba(26,17,8,0.3), 0 0 0 1px rgba(245,242,236,0.07);
+  transform: perspective(1200px) rotateY(-7deg) rotateX(3deg);
+}
+.term-bar {
+  background: var(--dark-bg2); border-bottom: 1px solid var(--dark-border);
+  padding: 12px 16px; display: flex; align-items: center; gap: 8px;
+}
+.term-dots { display: flex; gap: 6px; }
+.term-dots span { width: 10px; height: 10px; border-radius: 50%; display: block; }
+.term-title { flex: 1; text-align: center; font-size: 11px; color: var(--dark-muted); font-family: var(--mono); }
+.term-body { padding: 20px 20px 24px; font-family: var(--mono); font-size: 12px; line-height: 1.8; }
+.tc { color: var(--dark-muted); }
+.ta { color: var(--amber); }
+.tg { color: #4ade80; }
+.tp { color: #38bdf8; }
+.tw { color: #fbbf24; }
+.term-prompt { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+.term-cursor { display: inline-block; width: 8px; height: 14px; background: var(--amber); opacity: 0.9; animation: blink 1.2s step-end infinite; }
+@keyframes blink { 0%,100%{opacity:0.9} 50%{opacity:0} }
+
+/* ── TICKER ── */
+.ticker-wrap {
+  overflow: hidden; border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0; background: var(--paper2);
+  white-space: nowrap; position: relative; z-index: 1;
+}
+.ticker-wrap:hover .ticker-inner { animation-play-state: paused; }
+.ticker-inner { display: inline-flex; animation: ticker 35s linear infinite; }
+.ticker-item { display: inline-flex; align-items: center; gap: 12px; padding: 0 32px; font-size: 11px; color: var(--muted); letter-spacing: 0.07em; text-transform: uppercase; font-family: var(--mono); }
+.ticker-item span { color: var(--amber); font-size: 8px; opacity: 0.5; }
+@keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* ── STATEMENT (DARK BAND) ── */
+.statement {
+  min-height: 90vh; display: flex; align-items: center;
+  justify-content: center; text-align: center; padding: 120px 24px;
+  background: var(--dark-bg); position: relative; overflow: hidden;
+}
+.statement::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(245,242,236,0.02) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+  pointer-events: none;
+}
+.statement-glow {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(181,114,42,0.05), transparent 70%);
+  pointer-events: none; filter: blur(60px);
+}
+.statement-inner { position: relative; z-index: 1; max-width: 1000px; }
+.statement-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(181,114,42,0.45); margin-bottom: 32px; display: block; }
+.scrub-text {
+  font-family: var(--serif); font-size: clamp(60px, 12vw, 132px);
+  font-weight: 400; letter-spacing: -0.04em; line-height: 0.95;
+}
+.scrub-text .word { display: inline-block; color: rgba(245,242,236,0.07); transition: color 0.1s; }
+.scrub-text .word.amber { color: rgba(181,114,42,0.07); }
+.statement-sub { margin-top: 40px; font-size: 16px; color: rgba(245,242,236,0.12); transition: color 0.1s; font-style: italic; font-family: var(--serif); }
+
+/* ── STICKY ENGINE (DARK) ── */
+.sticky-outer { height: 380vh; position: relative; }
+.sticky-pin {
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--dark-bg2);
+}
+.sticky-pin::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(245,242,236,0.015) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+  pointer-events: none;
+}
+.ss-progress-line {
+  position: absolute; top: 0; left: 0; height: 2px;
+  background: linear-gradient(90deg, var(--amber), #e8a84c);
+  width: 0%; z-index: 5;
+}
+.ss-dots { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 5; }
+.ss-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(245,242,236,0.12); transition: background 0.4s, transform 0.4s; }
+.ss-dot.on { background: var(--amber); transform: scale(1.6); }
+
+.ss-ch {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; padding: 60px 40px;
+  opacity: 0; transform: translateY(50px) scale(0.97);
+  transition: opacity 0.65s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);
+  pointer-events: none; z-index: 1;
+}
+.ss-ch.on  { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.ss-ch.out { opacity: 0; transform: translateY(-50px) scale(0.97); }
+.ss-glow { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; border-radius: 50%; pointer-events: none; filter: blur(80px); opacity: 0; transition: opacity 0.8s; background: radial-gradient(circle, rgba(181,114,42,0.07), transparent 60%); }
+.ss-ch.on .ss-glow { opacity: 1; }
+
+.ss-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(181,114,42,0.45); margin-bottom: 24px; position: relative; z-index: 1; }
+.ss-title { font-family: var(--serif); font-size: clamp(56px, 10vw, 108px); font-weight: 400; letter-spacing: -0.04em; line-height: 0.94; color: var(--dark-text); margin-bottom: 24px; max-width: 800px; position: relative; z-index: 1; }
+.ss-title em { font-style: italic; color: var(--amber); }
+.ss-desc { font-size: 18px; color: var(--dark-muted); max-width: 480px; line-height: 1.65; margin-bottom: 24px; position: relative; z-index: 1; }
+.ss-pill { display: inline-block; font-size: 12px; color: rgba(181,114,42,0.7); font-weight: 500; letter-spacing: 0.04em; border: 1px solid rgba(181,114,42,0.2); padding: 9px 22px; border-radius: 100px; background: rgba(181,114,42,0.03); position: relative; z-index: 1; font-family: var(--mono); }
+
+/* ── INTERLUDE (LIGHT) ── */
+.interlude {
+  min-height: 60vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 80px 24px; background: var(--paper); position: relative; overflow: hidden;
+}
+.interlude::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(-45deg, rgba(181,114,42,0.04) 0px, rgba(181,114,42,0.04) 1px, transparent 1px, transparent 52px);
+  pointer-events: none;
+}
+.interlude-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(181,114,42,0.5); margin-bottom: 24px; position: relative; z-index: 1; }
+.interlude-line { font-family: var(--serif); font-size: clamp(32px,5.5vw,68px); font-weight: 400; letter-spacing: -0.04em; line-height: 1.0; color: var(--ink); position: relative; z-index: 1; }
+.interlude-line + .interlude-line { color: var(--amber); font-style: italic; }
+.interlude-sub { margin-top: 24px; font-size: 16px; color: var(--muted); max-width: 380px; line-height: 1.75; position: relative; z-index: 1; }
+
+/* ── SECTIONS ── */
+section.sec { padding: 100px 24px; position: relative; overflow: hidden; }
+.container { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+.sec-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; opacity: 0.8; }
+.sec-title { font-family: var(--serif); font-size: clamp(28px, 4vw, 46px); font-weight: 400; letter-spacing: -0.03em; color: var(--ink); line-height: 1.05; margin-bottom: 12px; }
+.sec-sub { font-size: 15px; color: var(--muted); max-width: 440px; line-height: 1.75; }
+.sec-watermark { position: absolute; font-family: var(--serif); font-size: clamp(80px, 14vw, 180px); font-weight: 400; letter-spacing: -0.06em; color: rgba(26,17,8,0.03); pointer-events: none; user-select: none; white-space: nowrap; right: -20px; top: 50%; transform: translateY(-50%); line-height: 1; z-index: 0; }
+.sec-glow { position: absolute; pointer-events: none; z-index: 0; border-radius: 50%; filter: blur(80px); }
+
+/* Features (light bg) */
+#features { background: var(--paper); }
+#features .sec-glow { width:500px; height:500px; background:radial-gradient(circle, rgba(181,114,42,0.06), transparent 70%); right:-80px; top:50%; transform:translateY(-50%); }
+
+.feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 56px; background: var(--border); border-radius: 14px; overflow: hidden; }
+.feat-card { background: var(--paper); padding: 32px; transition: background 0.25s; position: relative; overflow: hidden; }
+.feat-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(181,114,42,0.06), transparent 60%); opacity: 0; transition: opacity 0.35s; }
+.feat-card:hover { background: var(--paper2); }
+.feat-card:hover::before { opacity: 1; }
+.feat-card:hover .feat-icon { transform: scale(1.15) rotate(-3deg); }
+.feat-icon { font-size: 22px; margin-bottom: 16px; display: block; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+.feat-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+.feat-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+/* Skills (dark bg) */
+#includes { background: var(--dark-bg); }
+#includes::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(245,242,236,0.015) 1px, transparent 1px); background-size:36px 36px; pointer-events:none; z-index:0; }
+#includes .sec-glow { width:400px; height:400px; background:radial-gradient(circle, rgba(181,114,42,0.06), transparent 70%); left:-80px; top:40%; }
+
+.skills-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; margin-top: 40px; }
+.skill-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; border-radius: 8px;
+  border: 1px solid var(--dark-border);
+  background: rgba(245,242,236,0.02);
+  font-size: 13px; color: var(--dark-muted); letter-spacing: 0.01em;
+  transition: border-color 0.2s, background 0.2s;
+  font-family: var(--mono);
+}
+.skill-row:hover { border-color: rgba(181,114,42,0.3); background: rgba(181,114,42,0.04); color: var(--dark-text); }
+.skill-row::before { content: '→'; color: var(--amber); font-size: 11px; flex-shrink: 0; }
+
+/* Timeline (light) */
+#how { background: var(--paper2); }
+#how::before { content:''; position:absolute; inset:0; background-image:repeating-linear-gradient(-45deg, rgba(181,114,42,0.025) 0px, rgba(181,114,42,0.025) 1px, transparent 1px, transparent 48px); pointer-events:none; z-index:0; }
+#how .sec-glow { width:400px; height:400px; background:radial-gradient(circle, rgba(181,114,42,0.06), transparent 70%); right:-60px; top:40%; }
+
+.timeline { position: relative; margin-top: 56px; padding-left: 32px; }
+.timeline::before { content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--amber), rgba(181,114,42,0.05)); }
+.tl-step { position: relative; padding-bottom: 48px; padding-left: 28px; }
+.tl-step:last-child { padding-bottom: 0; }
+.tl-ghost { position: absolute; right: 0; top: -10px; font-size: 120px; font-weight: 400; font-family: var(--serif); color: rgba(26,17,8,0.03); letter-spacing: -0.06em; line-height: 1; pointer-events: none; user-select: none; }
+.tl-dot { position: absolute; left: -32px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 14px rgba(181,114,42,0.6); margin-left: 7px; animation: tl-pulse 3s ease-in-out infinite; }
+.tl-step:nth-child(1) .tl-dot{animation-delay:0s} .tl-step:nth-child(2) .tl-dot{animation-delay:1s} .tl-step:nth-child(3) .tl-dot{animation-delay:2s}
+@keyframes tl-pulse { 0%,100%{box-shadow:0 0 14px rgba(181,114,42,0.6)} 50%{box-shadow:0 0 24px rgba(181,114,42,0.9), 0 0 40px rgba(181,114,42,0.3)} }
+.tl-num { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: rgba(181,114,42,0.45); margin-bottom: 6px; font-family: var(--mono); }
+.tl-title { font-family: var(--serif); font-size: 19px; font-weight: 400; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 6px; }
+.tl-desc { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 520px; }
+
+/* Pricing (dark) */
+#pricing { background: var(--dark-bg2); }
+#pricing::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(245,242,236,0.015) 1px, transparent 1px); background-size:36px 36px; pointer-events:none; z-index:0; }
+#pricing .sec-glow { width:500px; height:500px; background:radial-gradient(circle, rgba(181,114,42,0.06), transparent 70%); left:50%; top:50%; transform:translate(-50%,-50%); }
+
+#pricing .sec-title, #pricing .sec-label, #pricing .sec-sub { color: inherit; }
+#pricing .sec-title { color: var(--dark-text); }
+#pricing .sec-label { color: var(--amber); }
+#pricing .sec-sub { color: var(--dark-muted); }
+
+.pricing-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 48px; max-width: 720px; }
+.price-card { background: var(--dark-bg); border: 1px solid var(--dark-border); border-radius: 14px; padding: 36px; transition: border-color 0.25s, transform 0.25s; position: relative; }
+.price-card:hover { border-color: rgba(245,242,236,0.15); transform: translateY(-2px); }
+.price-card.featured {
+  background: linear-gradient(var(--dark-bg3), var(--dark-bg3)) padding-box,
+              linear-gradient(135deg, rgba(181,114,42,0.8), rgba(245,158,11,0.4), rgba(181,114,42,0.8)) border-box;
+  border: 1px solid transparent;
+  animation: border-spin 5s ease infinite;
+  background-size: 200% 200%;
+}
+@keyframes border-spin { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+.feat-tag { position: absolute; top: -1px; right: 24px; background: var(--amber); color: var(--paper); font-size: 10px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 12px; border-radius: 0 0 8px 8px; font-family: var(--mono); }
+.price-tier { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); opacity: 0.7; margin-bottom: 12px; font-family: var(--mono); }
+.price-name { font-size: 16px; font-weight: 600; color: var(--dark-text); margin-bottom: 16px; }
+.price-amount { font-family: var(--serif); font-size: 52px; font-weight: 400; color: var(--dark-text); letter-spacing: -0.04em; line-height: 1; margin-bottom: 4px; }
+.price-amount sup { font-size: 22px; vertical-align: top; margin-top: 12px; display: inline-block; font-family: var(--sans); }
+.price-period { font-size: 13px; color: var(--dark-muted); margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--dark-border); }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.price-features li { font-size: 13px; color: var(--dark-muted); display: flex; align-items: flex-start; gap: 8px; }
+.price-features li::before { content: '✓'; color: var(--amber); flex-shrink: 0; font-weight: 700; }
+.price-btn { display: block; width: 100%; text-align: center; padding: 13px; border-radius: 8px; font-weight: 700; font-size: 14px; text-decoration: none; transition: all 0.2s; cursor: pointer; font-family: var(--sans); border: none; }
+.price-btn-primary { background: var(--amber); color: var(--paper); }
+.price-btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+.price-btn-ghost { background: var(--dark-bg2); color: var(--dark-text); border: 1px solid var(--dark-border); }
+.price-btn-ghost:hover { border-color: rgba(245,242,236,0.2); }
+
+/* FAQ (light) */
+#faq { background: var(--paper); }
+#faq::before { content:''; position:absolute; inset:0; background-image:repeating-linear-gradient(-45deg, rgba(181,114,42,0.02) 0px, rgba(181,114,42,0.02) 1px, transparent 1px, transparent 52px); pointer-events:none; z-index:0; }
+#faq .sec-glow { width:400px; height:400px; background:radial-gradient(circle, rgba(181,114,42,0.05), transparent 70%); right:10%; top:30%; }
+
+.faq-list { margin-top: 48px; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: none; }
+.faq-item.open { background: var(--paper2); }
+.faq-q { cursor: pointer; padding: 22px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; font-weight: 500; color: var(--muted); transition: color 0.2s; user-select: none; }
+.faq-item.open .faq-q { color: var(--ink); }
+.faq-q::after { content: '+'; color: var(--amber); font-size: 18px; font-weight: 300; flex-shrink: 0; transition: transform 0.25s; line-height: 1; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; padding: 0 28px; font-size: 13px; color: var(--muted); line-height: 1.75; }
+.faq-item.open .faq-a { max-height: 200px; padding: 0 28px 22px; }
+
+/* ── FOOTER ── */
+footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; background: var(--paper); flex-wrap: wrap; gap: 16px; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--ink); }
+.footer-copy { font-size: 12px; color: var(--dim); }
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(26,17,8,0.7);
+  backdrop-filter: blur(12px); z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+.modal {
+  background: var(--paper); border-radius: 18px; padding: 48px;
+  width: 100%; max-width: 480px; margin: 20px;
+  box-shadow: 0 40px 120px rgba(26,17,8,0.4);
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+.modal-overlay.open .modal { transform: translateY(0) scale(1); }
+.modal-title { font-family: var(--serif); font-size: 28px; color: var(--ink); letter-spacing: -0.03em; margin-bottom: 8px; }
+.modal-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; line-height: 1.6; }
+.modal-close {
+  position: absolute; top: 20px; right: 20px; width: 32px; height: 32px;
+  border-radius: 50%; background: var(--paper2); border: none; cursor: pointer;
+  font-size: 16px; color: var(--muted); display: grid; place-items: center;
+  transition: background 0.2s, color 0.2s;
+}
+.modal-close:hover { background: var(--paper3); color: var(--ink); }
+.form-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.form-row label { font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+.form-row input {
+  padding: 11px 14px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--paper);
+  font-size: 14px; color: var(--ink); font-family: var(--sans);
+  transition: border-color 0.2s; outline: none;
+}
+.form-row input:focus { border-color: rgba(181,114,42,0.5); }
+.form-submit {
+  width: 100%; padding: 14px; border-radius: 8px;
+  background: var(--amber); color: var(--paper);
+  font-weight: 700; font-size: 14px; cursor: pointer; border: none;
+  font-family: var(--sans); transition: opacity 0.2s; margin-top: 8px;
+}
+.form-submit:hover { opacity: 0.88; }
+.form-note { font-size: 11px; color: var(--dim); margin-top: 12px; text-align: center; line-height: 1.6; }
+
+/* ── REVEALS ── */
+.reveal { opacity: 0; transform: translateY(24px) scale(0.97); transition: opacity 0.7s ease, transform 0.7s ease; will-change: opacity,transform; }
+.reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+.reveal-left { opacity: 0; transform: translateX(-56px) scale(0.97); transition: opacity 0.75s ease, transform 0.75s ease; }
+.reveal-left.visible { opacity: 1; transform: translateX(0) scale(1); }
+.reveal-right { opacity: 0; transform: translateX(56px) scale(0.97); transition: opacity 0.75s ease, transform 0.75s ease; }
+.reveal-right.visible { opacity: 1; transform: translateX(0) scale(1); }
+.reveal-d1{transition-delay:0.08s} .reveal-d2{transition-delay:0.18s} .reveal-d3{transition-delay:0.28s}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  nav ul a:not(.nav-cta):not(:last-child):not(:nth-last-child(2)) { display: none; }
+  .hero { padding: 100px 20px 60px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .terminal-float { display: none; }
+  section.sec { padding: 64px 20px; }
+  .feat-grid { grid-template-columns: 1fr 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 440px; }
+  footer { padding: 20px; }
+  .sticky-outer { height: auto; }
+  .sticky-pin { position: relative; height: auto; display: flex; flex-direction: column; }
+  .ss-ch { position: relative; opacity: 1; transform: none !important; pointer-events: auto; padding: 60px 24px; border-bottom: 1px solid var(--dark-border); }
+  .ss-ch.out { opacity: 1; transform: none !important; }
+  .ss-dots, .ss-progress-line { display: none; }
+  .ss-title { font-size: 48px; }
+  .scrub-text { font-size: 56px; }
+  .sec-watermark { display: none; }
+  .modal { padding: 32px 24px; }
+}
+@media (max-width: 600px) {
+  .feat-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 40px; }
+  .hero-stats { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark">A</div>
+    AIKit<span> Pro</span>
+  </a>
+  <ul>
+    <li><a href="#features" data-section="features">Features</a></li>
+    <li><a href="#includes" data-section="includes">Skills</a></li>
+    <li><a href="#pricing" data-section="pricing">Pricing</a></li>
+    <li><a href="#pricing" class="nav-cta" onclick="openModal(); return false;">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="background:var(--paper);position:relative;overflow:hidden;">
+  <div class="hero">
+    <div class="h-glow h-glow-1"></div>
+    <div class="h-glow h-glow-2"></div>
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge reveal"><div class="badge-dot"></div>30+ professional skills included</div>
+        <h1 class="reveal reveal-d1">Claude Code.<br><em>Configured</em><br>for you.</h1>
+        <p class="hero-sub reveal reveal-d2">One command sets up Claude Code with professional configuration, 30+ curated skills, and auto-updates every month. No manual setup. No guesswork.</p>
+        <div class="hero-actions reveal reveal-d3">
+          <button class="btn-primary" onclick="openModal()">Get AIKit Pro</button>
+          <a href="#features" class="btn-ghost">See what's included →</a>
+        </div>
+        <div class="hero-stats reveal reveal-d3">
+          <div class="hs"><div class="hs-num">30<span>+</span></div><div class="hs-label">Skills included</div></div>
+          <div class="hs-divider"></div>
+          <div class="hs"><div class="hs-num">1<span>cmd</span></div><div class="hs-label">To install everything</div></div>
+          <div class="hs-divider"></div>
+          <div class="hs"><div class="hs-num">0</div><div class="hs-label">Manual config</div></div>
+        </div>
+      </div>
+      <div class="terminal-float reveal reveal-d2">
+        <div class="term-window">
+          <div class="term-bar">
+            <div class="term-dots">
+              <span style="background:#f85149"></span>
+              <span style="background:#e3b341"></span>
+              <span style="background:#3fb950"></span>
+            </div>
+            <div class="term-title">PowerShell — AIKit Pro Installer</div>
+          </div>
+          <div class="term-body">
+            <div><span class="tc">PS C:\Users\you&gt; </span><span class="ta">irm https://aikit.originforge.net/install.ps1 | iex</span></div>
+            <div><br></div>
+            <div><span class="tc">  ___  ___ _   _____ _   </span></div>
+            <div><span class="tc"> / _ \|_ _| | / /_ _| |_ </span></div>
+            <div><span class="tc">| |_| || || |/ / | || __|</span></div>
+            <div><span class="tc"> \___/ |_||___/ |_| \__| </span></div>
+            <div><br></div>
+            <div><span class="ta">→ </span><span class="tc">Checking prerequisites...</span></div>
+            <div><span class="tg">  ✓ </span><span class="tc">Node 24.3.0</span></div>
+            <div><span class="tg">  ✓ </span><span class="tc">Git 2.47.0</span></div>
+            <div><span class="tg">  ✓ </span><span class="tc">Python 3.14.0</span></div>
+            <div><span class="ta">→ </span><span class="tc">Installing Claude Code...</span></div>
+            <div><span class="tg">  ✓ </span><span class="tc">claude@1.0.7 installed globally</span></div>
+            <div><span class="ta">→ </span><span class="tc">Cloning skills library...</span></div>
+            <div><span class="tg">  ✓ </span><span class="tc">32 skills ready in ~/.claude/aikit-skills</span></div>
+            <div><span class="ta">→ </span><span class="tc">Configuring CLAUDE.md...</span></div>
+            <div><span class="tg">  ✓ </span><span class="tc">Professional settings applied</span></div>
+            <div><span class="ta">→ </span><span class="tc">Registering monthly auto-update...</span></div>
+            <div><span class="tg">  ✓ </span><span class="tc">Scheduled task created</span></div>
+            <div><br></div>
+            <div><span class="tg">✓ AIKit Pro setup complete!</span></div>
+            <div class="term-prompt"><span class="tc">PS C:\Users\you&gt; </span><span class="term-cursor"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <div class="ticker-item">Code review <span>◆</span></div>
+    <div class="ticker-item">Git workflow <span>◆</span></div>
+    <div class="ticker-item">PR description <span>◆</span></div>
+    <div class="ticker-item">Test generator <span>◆</span></div>
+    <div class="ticker-item">Refactor guide <span>◆</span></div>
+    <div class="ticker-item">SQL helper <span>◆</span></div>
+    <div class="ticker-item">Docker setup <span>◆</span></div>
+    <div class="ticker-item">Security audit <span>◆</span></div>
+    <div class="ticker-item">API design <span>◆</span></div>
+    <div class="ticker-item">Performance review <span>◆</span></div>
+    <div class="ticker-item">Documentation <span>◆</span></div>
+    <div class="ticker-item">Debug assistant <span>◆</span></div>
+    <div class="ticker-item">Code review <span>◆</span></div>
+    <div class="ticker-item">Git workflow <span>◆</span></div>
+    <div class="ticker-item">PR description <span>◆</span></div>
+    <div class="ticker-item">Test generator <span>◆</span></div>
+    <div class="ticker-item">Refactor guide <span>◆</span></div>
+    <div class="ticker-item">SQL helper <span>◆</span></div>
+    <div class="ticker-item">Docker setup <span>◆</span></div>
+    <div class="ticker-item">Security audit <span>◆</span></div>
+    <div class="ticker-item">API design <span>◆</span></div>
+    <div class="ticker-item">Performance review <span>◆</span></div>
+    <div class="ticker-item">Documentation <span>◆</span></div>
+    <div class="ticker-item">Debug assistant <span>◆</span></div>
+  </div>
+</div>
+
+<!-- STATEMENT (DARK BAND) -->
+<section class="statement">
+  <div class="statement-glow"></div>
+  <div class="statement-inner">
+    <span class="statement-label">AIKit Pro</span>
+    <h2 class="scrub-text">
+      <span class="word">Configure</span>&nbsp;<span class="word">once.</span><br>
+      <span class="word amber">Ship</span>&nbsp;<span class="word amber">forever.</span>
+    </h2>
+    <p class="statement-sub" id="statement-sub">Every month. Fresh skills. Zero effort.</p>
+  </div>
+</section>
+
+<!-- STICKY CHAPTERS (DARK) -->
+<div class="sticky-outer" id="skill-sticky">
+  <div class="sticky-pin">
+    <div class="ss-progress-line" id="ss-line"></div>
+    <div class="ss-dots">
+      <div class="ss-dot on"></div>
+      <div class="ss-dot"></div>
+      <div class="ss-dot"></div>
+    </div>
+    <div class="ss-ch on">
+      <div class="ss-glow"></div>
+      <div class="ss-eyebrow">01 — Setup</div>
+      <h2 class="ss-title">One command.<br><em>Everything ready.</em></h2>
+      <p class="ss-desc">The installer checks your system, installs Claude Code, applies professional settings, and clones your skills library — in under two minutes.</p>
+      <span class="ss-pill">Windows, macOS, Linux · Python + Node + Git prereqs checked</span>
+    </div>
+    <div class="ss-ch">
+      <div class="ss-glow"></div>
+      <div class="ss-eyebrow">02 — Skills Library</div>
+      <h2 class="ss-title">30+ skills.<br><em>Ready to invoke.</em></h2>
+      <p class="ss-desc">Code review, PR descriptions, SQL helpers, security audits, Docker setup, test generation, API design — every skill is instantly available in any project.</p>
+      <span class="ss-pill">/code-review · /pr-description · /test-gen · /security-audit</span>
+    </div>
+    <div class="ss-ch">
+      <div class="ss-glow"></div>
+      <div class="ss-eyebrow">03 — Auto-Updates</div>
+      <h2 class="ss-title">Fresh skills.<br><em>Every month.</em></h2>
+      <p class="ss-desc">A scheduled task pulls the latest skills on the 1st of each month. Your local overrides are always preserved. New capabilities arrive automatically.</p>
+      <span class="ss-pill">Monthly · Zero manual steps · Local overrides preserved</span>
+    </div>
+  </div>
+</div>
+
+<!-- INTERLUDE -->
+<div class="interlude">
+  <p class="interlude-eyebrow reveal">The difference</p>
+  <p class="interlude-line reveal reveal-d1">Claude. Configured.</p>
+  <p class="interlude-line reveal reveal-d2">For you.</p>
+  <p class="interlude-sub reveal reveal-d3">Most developers spend hours configuring AI tools. AIKit Pro makes that zero hours.</p>
+</div>
+
+<!-- FEATURES -->
+<section class="sec" id="features">
+  <div class="sec-glow"></div>
+  <span class="sec-watermark">Features</span>
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-label">What you get</p>
+      <h2 class="sec-title">Everything Claude Code needs to shine</h2>
+      <p class="sec-sub">Out of the box, ready to use in any project, from day one.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal"><span class="feat-icon">⚡</span><h4 class="feat-title">One-line install</h4><p class="feat-desc">Paste one command in PowerShell or Terminal. The installer handles prerequisites, installs Claude Code, and configures everything automatically.</p></div>
+      <div class="feat-card reveal reveal-d1"><span class="feat-icon">📚</span><h4 class="feat-title">30+ curated skills</h4><p class="feat-desc">Instantly available in any Claude Code session: code review, PR descriptions, SQL helpers, Docker setup, security audits, and more.</p></div>
+      <div class="feat-card reveal reveal-d2"><span class="feat-icon">⚙️</span><h4 class="feat-title">Professional CLAUDE.md</h4><p class="feat-desc">Comes pre-configured with sensible defaults for code quality, git conventions, security rules, and response style — the settings it takes hours to figure out.</p></div>
+      <div class="feat-card reveal"><span class="feat-icon">🔄</span><h4 class="feat-title">Monthly auto-updates</h4><p class="feat-desc">A scheduled task pulls the latest skills library on the 1st of each month. Your personal overrides are always preserved during the merge.</p></div>
+      <div class="feat-card reveal reveal-d1"><span class="feat-icon">🪟</span><h4 class="feat-title">Windows &amp; Mac ready</h4><p class="feat-desc">The PowerShell installer handles Windows (includes scheduled task registration). The bash installer handles macOS and Linux (cron job auto-registered).</p></div>
+      <div class="feat-card reveal reveal-d2"><span class="feat-icon">🔓</span><h4 class="feat-title">Private GitHub access</h4><p class="feat-desc">Subscription authenticates your GitHub account to the private skills repository. Skills update via git pull — your tools stay fresh automatically.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="sec" id="includes">
+  <div class="sec-glow"></div>
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-label" style="color:var(--amber)">What's in the library</p>
+      <h2 class="sec-title" style="color:var(--dark-text)">30+ skills. Instantly available.</h2>
+      <p class="sec-sub" style="color:var(--dark-muted)">Every skill is available as a slash command in any Claude Code session, in any project.</p>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-row">/code-review — full PR-style review with severity</div>
+      <div class="skill-row">/pr-description — structured PR body from staged changes</div>
+      <div class="skill-row">/test-gen — generate comprehensive test suites</div>
+      <div class="skill-row">/security-audit — OWASP top 10 + dependency check</div>
+      <div class="skill-row">/sql-helper — query design, index suggestions, N+1 detection</div>
+      <div class="skill-row">/docker-setup — Dockerfile + compose from scratch</div>
+      <div class="skill-row">/api-design — REST + OpenAPI spec from requirements</div>
+      <div class="skill-row">/refactor — safe refactor with explanation + tests</div>
+      <div class="skill-row">/debug — systematic root-cause analysis</div>
+      <div class="skill-row">/docs — docstrings + README from code</div>
+      <div class="skill-row">/perf-review — bottleneck analysis, complexity audit</div>
+      <div class="skill-row">/git-workflow — branch strategy + commit message format</div>
+    </div>
+    <p class="reveal" style="margin-top:20px;font-size:13px;color:var(--dark-muted)">+ 18 more skills. New skills added each month.</p>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="sec" id="how">
+  <div class="sec-glow"></div>
+  <span class="sec-watermark">Install</span>
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-label">How to start</p>
+      <h2 class="sec-title">Three steps. Under two minutes.</h2>
+      <p class="sec-sub">From zero to a fully configured Claude Code environment, fast.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-step reveal-left">
+        <div class="tl-ghost">1</div>
+        <div class="tl-dot"></div>
+        <div class="tl-num">Step 01</div>
+        <h4 class="tl-title">Subscribe and accept your GitHub invite</h4>
+        <p class="tl-desc">After checkout, your GitHub account is invited to the private skills repository. Accept the invite from your GitHub notifications.</p>
+      </div>
+      <div class="tl-step reveal-left reveal-d1">
+        <div class="tl-ghost">2</div>
+        <div class="tl-dot"></div>
+        <div class="tl-num">Step 02</div>
+        <h4 class="tl-title">Run one command</h4>
+        <p class="tl-desc">Paste the Windows or Mac/Linux installer command from the welcome email. It handles prerequisites, installs Claude Code, and configures everything.</p>
+      </div>
+      <div class="tl-step reveal-left reveal-d2">
+        <div class="tl-ghost">3</div>
+        <div class="tl-dot"></div>
+        <div class="tl-num">Done</div>
+        <h4 class="tl-title">Open any project and start with /code-review</h4>
+        <p class="tl-desc">All 30+ skills are immediately available in any Claude Code session. Skills update automatically every month — you never need to touch the setup again.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="pricing">
+  <div class="sec-glow"></div>
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-label">Pricing</p>
+      <h2 class="sec-title">Simple pricing. Cancel anytime.</h2>
+      <p class="sec-sub">One plan, everything included. No seat limits, no feature tiers.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal-left">
+        <p class="price-tier">Monthly</p>
+        <p class="price-name">Full access</p>
+        <p class="price-amount"><sup>€</sup>19</p>
+        <p class="price-period">per month · cancel anytime</p>
+        <ul class="price-features">
+          <li>30+ professional skills</li>
+          <li>Pre-configured CLAUDE.md</li>
+          <li>Windows + Mac installer</li>
+          <li>Monthly auto-updates</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <button onclick="openModal()" class="price-btn price-btn-ghost">Subscribe Monthly</button>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="feat-tag">Best value</div>
+        <p class="price-tier">Annual</p>
+        <p class="price-name">Two months free</p>
+        <p class="price-amount"><sup>€</sup>159</p>
+        <p class="price-period">per year · €13.25/mo equivalent</p>
+        <ul class="price-features">
+          <li>Everything in Monthly</li>
+          <li>Priority support</li>
+          <li>Early access to new skills</li>
+          <li>Locked-in annual rate</li>
+          <li>Cancel anytime (prorated refund)</li>
+        </ul>
+        <button onclick="openModal()" class="price-btn price-btn-primary">Subscribe Annual — Save 30%</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="sec-glow"></div>
+  <div class="container">
+    <div class="reveal"><p class="sec-label">FAQ</p><h2 class="sec-title">Common questions</h2></div>
+    <div class="faq-list reveal">
+      <div class="faq-item"><div class="faq-q">Does this work with any project or language?</div><div class="faq-a">Yes. The skills work at the Claude Code level — they're not project-specific. You can use /code-review on a Python project today and a Node.js project tomorrow. The skills adapt to whatever codebase Claude Code is reading.</div></div>
+      <div class="faq-item"><div class="faq-q">Do I need a Claude Code subscription too?</div><div class="faq-a">Yes. AIKit Pro sets up and configures Claude Code, but Claude Code itself requires a Claude Pro account (claude.ai) or API key. AIKit Pro is the configuration and skills layer on top of Claude Code.</div></div>
+      <div class="faq-item"><div class="faq-q">What happens to the skills if I cancel?</div><div class="faq-a">Your local skills library and configuration remain on your machine. You just won't receive monthly updates to new skills, and your GitHub access to the private repo is removed. The skills you already have keep working.</div></div>
+      <div class="faq-item"><div class="faq-q">How do monthly updates work?</div><div class="faq-a">The installer registers a scheduled task (Windows) or cron job (Mac/Linux) that runs on the 1st of each month. It pulls the latest skills via git and merges the CLAUDE.md template while preserving your personal Local Overrides section.</div></div>
+      <div class="faq-item"><div class="faq-q">How is payment handled?</div><div class="faq-a">Stripe handles all payments — credit/debit card, no bank transfer needed. Your subscription is managed directly through Stripe's secure checkout. Subscriptions cancel immediately from the customer portal with no questions asked.</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="logo"><div class="logo-mark">A</div>AIKit<span> Pro</span></a>
+  <div class="footer-links">
+    <a href="#features">Features</a>
+    <a href="#includes">Skills</a>
+    <a href="#pricing">Pricing</a>
+    <a href="mailto:kai.kpbg@gmail.com">Contact</a>
+  </div>
+  <p class="footer-copy">© 2026 AIKit Pro · originforge.net</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2 class="modal-title">Get AIKit Pro</h2>
+    <p class="modal-sub">Enter your details and you'll be redirected to Stripe checkout. GitHub access is granted automatically after payment.</p>
+    <form onsubmit="submitForm(event)" id="signup-form">
+      <div class="form-row">
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Your name" required>
+      </div>
+      <div class="form-row">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-row">
+        <label>GitHub username</label>
+        <input type="text" name="github_username" placeholder="github-username" required>
+      </div>
+      <div class="form-row">
+        <label>Plan</label>
+        <select name="plan" style="padding:11px 14px;border-radius:8px;border:1px solid var(--border);background:var(--paper);font-size:14px;color:var(--ink);font-family:var(--sans);outline:none;width:100%">
+          <option value="annual">Annual — €159/yr (Best value)</option>
+          <option value="monthly">Monthly — €19/mo</option>
+        </select>
+      </div>
+      <p id="form-error" style="display:none;color:#ef4444;font-size:13px;margin-bottom:8px;"></p>
+      <button type="submit" class="form-submit" id="submit-btn">Continue to checkout →</button>
+    </form>
+    <p class="form-note">Secured by Stripe. GitHub invite sent instantly after payment.</p>
+  </div>
+</div>
+
+<script>
+const API_URL = 'https://api.aikit.originforge.net';
+
+// ── Modal ──
+function openModal() { document.getElementById('modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+async function submitForm(e) {
+  e.preventDefault();
+  const btn    = document.getElementById('submit-btn');
+  const errEl  = document.getElementById('form-error');
+  const form   = document.getElementById('signup-form');
+
+  const payload = {
+    name:            form.querySelector('[name=name]').value.trim(),
+    email:           form.querySelector('[name=email]').value.trim(),
+    github_username: form.querySelector('[name=github_username]').value.trim(),
+    plan:            form.querySelector('[name=plan]').value,
+  };
+
+  btn.disabled    = true;
+  btn.textContent = 'Redirecting…';
+  errEl.style.display = 'none';
+
+  try {
+    const resp = await fetch(`${API_URL}/signup`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload),
+    });
+    if (!resp.ok) {
+      const detail = await resp.json().catch(() => ({}));
+      throw new Error(detail.detail || `Server error (${resp.status})`);
+    }
+    const { checkout_url } = await resp.json();
+    window.location.href = checkout_url;
+  } catch (err) {
+    btn.disabled    = false;
+    btn.textContent = 'Continue to checkout →';
+    errEl.textContent = err.message || 'Something went wrong. Please try again.';
+    errEl.style.display = 'block';
+  }
+}
+
+// ── Reveal ──
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => ro.observe(el));
+
+// ── FAQ ──
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!open) item.classList.add('open');
+  });
+});
+
+// ── Scroll scrub ──
+const scrubEl = document.querySelector('.scrub-text');
+const scrubWords = scrubEl ? scrubEl.querySelectorAll('.word') : [];
+const stmtSub = document.getElementById('statement-sub');
+
+function updateScrub() {
+  if (!scrubEl) return;
+  const rect = scrubEl.getBoundingClientRect();
+  const vh = window.innerHeight;
+  const progress = (vh * 0.85 - rect.top) / (vh * 0.75);
+  scrubWords.forEach((w, i) => {
+    const p = Math.max(0, Math.min(1, (progress - i / scrubWords.length) / (1 / scrubWords.length)));
+    if (w.classList.contains('amber')) {
+      w.style.color = `rgba(181,114,42,${0.07 + p * 0.93})`;
+    } else {
+      const b = Math.round(245 * (0.07 + p * 0.93));
+      const g = Math.round(242 * (0.07 + p * 0.93));
+      const r2 = Math.round(236 * (0.07 + p * 0.93));
+      w.style.color = `rgb(${b},${g},${r2})`;
+    }
+  });
+  if (stmtSub) {
+    const sp = Math.max(0, Math.min(1, (progress - 0.6) / 0.4));
+    stmtSub.style.color = `rgba(245,242,236,${0.12 + sp * 0.55})`;
+  }
+}
+
+// ── Sticky ──
+const stickyOuter = document.getElementById('skill-sticky');
+const ssChapters = document.querySelectorAll('.ss-ch');
+const ssDots = document.querySelectorAll('.ss-dot');
+const ssLine = document.getElementById('ss-line');
+let currentChapter = 0;
+
+function updateSticky() {
+  if (!stickyOuter || window.innerWidth <= 900) return;
+  const rect = stickyOuter.getBoundingClientRect();
+  const progress = Math.max(0, Math.min(1, -rect.top / (stickyOuter.offsetHeight - window.innerHeight)));
+  if (ssLine) ssLine.style.width = (progress * 100) + '%';
+  const n = ssChapters.length;
+  const idx = Math.min(Math.floor(progress * n), n - 1);
+  if (idx !== currentChapter) {
+    currentChapter = idx;
+    ssChapters.forEach((ch, i) => {
+      if (i === idx) { ch.classList.remove('out'); ch.classList.add('on'); }
+      else if (i < idx) { ch.classList.remove('on'); ch.classList.add('out'); }
+      else { ch.classList.remove('on', 'out'); }
+    });
+    ssDots.forEach((d, i) => d.classList.toggle('on', i === idx));
+  }
+}
+
+// ── Scroll loop ──
+const progressBar = document.getElementById('scroll-progress');
+const g1 = document.querySelector('.h-glow-1');
+const g2 = document.querySelector('.h-glow-2');
+const sections = Array.from(document.querySelectorAll('section.sec[id]'));
+const navLinks = document.querySelectorAll('nav ul a[data-section]');
+let lastY = 0, rafPending = false;
+
+function updateScroll() {
+  const y = lastY;
+  const max = document.body.scrollHeight - window.innerHeight;
+  const p = Math.min(y / max, 1);
+  progressBar.style.transform = `scaleX(${p})`;
+  if (g1) g1.style.transform = `translateY(${y * 0.10}px)`;
+  if (g2) g2.style.transform = `translateY(${y * 0.06}px)`;
+  let current = '';
+  sections.forEach(s => { if (y >= s.offsetTop - 100) current = s.id; });
+  navLinks.forEach(a => a.classList.toggle('active', a.dataset.section === current));
+  updateScrub();
+  updateSticky();
+  rafPending = false;
+}
+
+window.addEventListener('scroll', () => {
+  lastY = window.scrollY;
+  if (!rafPending) { rafPending = true; requestAnimationFrame(updateScroll); }
+}, { passive: true });
+</script>
+</body>
+</html>
