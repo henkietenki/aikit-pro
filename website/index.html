@@ -756,7 +756,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
         <div class="tl-dot"></div>
         <div class="tl-num">Step 02</div>
         <h4 class="tl-title">Run one command</h4>
-        <p class="tl-desc">Paste the Windows or Mac/Linux installer command from the welcome email. It handles prerequisites, installs Claude Code, and configures everything.</p>
+        <p class="tl-desc">Windows: <code style="font-family:var(--mono);font-size:12px;background:rgba(0,0,0,0.06);padding:2px 6px;border-radius:4px">irm https://aikit.originforge.net/install.ps1 | iex</code><br><br>Mac/Linux: <code style="font-family:var(--mono);font-size:12px;background:rgba(0,0,0,0.06);padding:2px 6px;border-radius:4px">curl -fsSL https://aikit.originforge.net/install.sh | bash</code><br><br>Checks prerequisites, installs Claude Code, clones your skills library, sets up monthly updates.</p>
       </div>
       <div class="tl-step reveal-left reveal-d2">
         <div class="tl-ghost">3</div>
@@ -787,6 +787,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
         <ul class="price-features">
           <li>150+ professional skills</li>
           <li>Pre-configured CLAUDE.md</li>
+          <li>47 custom /commands</li>
           <li>Windows + Mac installer</li>
           <li>Monthly auto-updates</li>
           <li>Cancel anytime</li>
