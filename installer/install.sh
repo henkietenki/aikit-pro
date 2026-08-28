@@ -153,6 +153,21 @@ setup_claude() {
     fi
     ok "Skills library ready"
 
+    # Install skills into Claude Code's skills directory
+    local skills_src="$skills_dir/skills"
+    local skills_dst="$claude_dir/skills"
+    if [[ -d "$skills_src" ]]; then
+        mkdir -p "$skills_dst"
+        count=0
+        for skill_dir in "$skills_src"/*/; do
+            [[ -d "$skill_dir" ]] || continue
+            skill_name=$(basename "$skill_dir")
+            cp -r "$skill_dir" "$skills_dst/$skill_name"
+            count=$((count + 1))
+        done
+        ok "$count skills installed to ~/.claude/skills/"
+    fi
+
     # Copy templates
     local tmpl="$skills_dir/skills/CLAUDE_TEMPLATE.md"
     [[ -f "$tmpl" && ! -f "$HOME/CLAUDE.md" ]] && cp "$tmpl" "$HOME/CLAUDE.md" && ok "CLAUDE.md created"

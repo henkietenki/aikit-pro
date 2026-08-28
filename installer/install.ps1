@@ -158,6 +158,19 @@ function Setup-ClaudeConfig {
     }
     Write-OK "Skills library cloned"
 
+    # Install skills into Claude Code's skills directory
+    $skillsSrc = Join-Path $skillsDir "skills"
+    $skillsDst = Join-Path $claudeDir "skills"
+    if (Test-Path $skillsSrc) {
+        New-Item -ItemType Directory -Force $skillsDst | Out-Null
+        $count = 0
+        Get-ChildItem -Path $skillsSrc -Directory | ForEach-Object {
+            Copy-Item -Path $_.FullName -Destination (Join-Path $skillsDst $_.Name) -Recurse -Force
+            $count++
+        }
+        Write-OK "$count skills installed to ~/.claude/skills/"
+    }
+
     # Copy CLAUDE.md template
     $templateSrc = Join-Path $skillsDir "skills\CLAUDE_TEMPLATE.md"
     $templateDst = Join-Path $env:USERPROFILE "CLAUDE.md"

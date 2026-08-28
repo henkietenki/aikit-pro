@@ -77,4 +77,23 @@ else
     fi
 fi
 
+# ── Copy skills to Claude Code skills directory ───────────────────────────────
+
+SKILLS_SRC="$SKILLS_DIR/skills"
+SKILLS_DST="$HOME/.claude/skills"
+
+if [[ -d "$SKILLS_SRC" ]]; then
+    mkdir -p "$SKILLS_DST"
+    copied=0
+    for skill_dir in "$SKILLS_SRC"/*/; do
+        [[ -d "$skill_dir" ]] || continue
+        skill_name=$(basename "$skill_dir")
+        cp -r "$skill_dir" "$SKILLS_DST/$skill_name"
+        copied=$((copied + 1))
+    done
+    log "Installed $copied skills to $SKILLS_DST"
+else
+    log "Skills source not found: $SKILLS_SRC" "WARN"
+fi
+
 log "AIKit monthly update complete"

@@ -95,4 +95,22 @@ if (-not (Test-Path $ClaudeMd)) {
     }
 }
 
+# ── Copy skills to Claude Code skills directory ───────────────────────────────
+
+$SkillsSrc = Join-Path $SkillsDir "skills"
+$SkillsDst = Join-Path $env:USERPROFILE ".claude\skills"
+
+if (Test-Path $SkillsSrc) {
+    New-Item -ItemType Directory -Force $SkillsDst | Out-Null
+    $copied = 0
+    Get-ChildItem -Path $SkillsSrc -Directory | ForEach-Object {
+        $dstDir = Join-Path $SkillsDst $_.Name
+        Copy-Item -Path $_.FullName -Destination $dstDir -Recurse -Force
+        $copied++
+    }
+    Log "Installed $copied skills to $SkillsDst"
+} else {
+    Log "Skills source not found: $SkillsSrc" "WARN"
+}
+
 Log "AIKit monthly update complete"
