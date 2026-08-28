@@ -77,6 +77,22 @@ else
     fi
 fi
 
+# ── Copy commands to Claude Code commands directory ──────────────────────────
+
+COMMANDS_SRC="$SKILLS_DIR/commands"
+COMMANDS_DST="$HOME/.claude/commands"
+
+if [[ -d "$COMMANDS_SRC" ]]; then
+    mkdir -p "$COMMANDS_DST"
+    cmd_count=0
+    for f in "$COMMANDS_SRC"/*.md; do
+        [[ -f "$f" ]] || continue
+        cp "$f" "$COMMANDS_DST/$(basename "$f")"
+        cmd_count=$((cmd_count + 1))
+    done
+    log "Installed $cmd_count commands to $COMMANDS_DST"
+fi
+
 # ── Copy skills to Claude Code skills directory ───────────────────────────────
 
 SKILLS_SRC="$SKILLS_DIR/skills"

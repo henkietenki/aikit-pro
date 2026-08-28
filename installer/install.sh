@@ -153,6 +153,20 @@ setup_claude() {
     fi
     ok "Skills library ready"
 
+    # Install commands into Claude Code's commands directory
+    local commands_src="$skills_dir/commands"
+    local commands_dst="$claude_dir/commands"
+    if [[ -d "$commands_src" ]]; then
+        mkdir -p "$commands_dst"
+        cmd_count=0
+        for f in "$commands_src"/*.md; do
+            [[ -f "$f" ]] || continue
+            cp "$f" "$commands_dst/$(basename "$f")"
+            cmd_count=$((cmd_count + 1))
+        done
+        ok "$cmd_count custom commands installed to ~/.claude/commands/"
+    fi
+
     # Install skills into Claude Code's skills directory
     local skills_src="$skills_dir/skills"
     local skills_dst="$claude_dir/skills"

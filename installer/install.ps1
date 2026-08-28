@@ -158,6 +158,19 @@ function Setup-ClaudeConfig {
     }
     Write-OK "Skills library cloned"
 
+    # Install commands into Claude Code's commands directory
+    $commandsSrc = Join-Path $skillsDir "commands"
+    $commandsDst = Join-Path $claudeDir "commands"
+    if (Test-Path $commandsSrc) {
+        New-Item -ItemType Directory -Force $commandsDst | Out-Null
+        $cmdCount = 0
+        Get-ChildItem -Path $commandsSrc -Filter "*.md" | ForEach-Object {
+            Copy-Item $_.FullName (Join-Path $commandsDst $_.Name) -Force
+            $cmdCount++
+        }
+        Write-OK "$cmdCount custom commands installed to ~/.claude/commands/"
+    }
+
     # Install skills into Claude Code's skills directory
     $skillsSrc = Join-Path $skillsDir "skills"
     $skillsDst = Join-Path $claudeDir "skills"

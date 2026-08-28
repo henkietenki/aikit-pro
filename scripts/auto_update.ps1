@@ -95,6 +95,21 @@ if (-not (Test-Path $ClaudeMd)) {
     }
 }
 
+# ── Copy commands to Claude Code commands directory ──────────────────────────
+
+$CommandsSrc = Join-Path $SkillsDir "commands"
+$CommandsDst = Join-Path $env:USERPROFILE ".claude\commands"
+
+if (Test-Path $CommandsSrc) {
+    New-Item -ItemType Directory -Force $CommandsDst | Out-Null
+    $cmdCount = 0
+    Get-ChildItem -Path $CommandsSrc -Filter "*.md" | ForEach-Object {
+        Copy-Item $_.FullName (Join-Path $CommandsDst $_.Name) -Force
+        $cmdCount++
+    }
+    Log "Installed $cmdCount commands to $CommandsDst"
+}
+
 # ── Copy skills to Claude Code skills directory ───────────────────────────────
 
 $SkillsSrc = Join-Path $SkillsDir "skills"
