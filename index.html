@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AIKit Pro — Claude Code, Professionally Configured</title>
-<meta name="description" content="One command installs Claude Code with 150+ professional skills, auto-configured settings, and monthly updates. No manual setup, no guesswork.">
+<meta name="description" content="One command installs Claude Code with 153 professional skills, auto-configured settings, and monthly updates. No manual setup, no guesswork.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23B5722A'/><text x='16' y='23' font-size='18' font-family='Georgia,serif' font-weight='800' fill='white' text-anchor='middle'>A</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <meta property="og:title" content="AIKit Pro — Claude Code, Professionally Configured">
-<meta property="og:description" content="One command installs Claude Code with 150+ professional skills and monthly updates.">
+<meta property="og:description" content="One command installs Claude Code with 153 professional skills and monthly updates.">
 <meta property="og:url" content="https://aikit.originforge.net">
 <meta property="og:type" content="website">
 <style>
@@ -338,7 +338,7 @@ section.sec { padding: 100px 24px; position: relative; overflow: hidden; }
 #includes::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(245,242,236,0.015) 1px, transparent 1px); background-size:36px 36px; pointer-events:none; z-index:0; }
 #includes .sec-glow { width:400px; height:400px; background:radial-gradient(circle, rgba(181,114,42,0.06), transparent 70%); left:-80px; top:40%; }
 
-.skills-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; margin-top: 40px; }
+.skills-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 6px; margin-top: 40px; max-height: 680px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(181,114,42,0.3) transparent; padding-right: 4px; }
 .skill-row {
   display: flex; align-items: center; gap: 10px;
   padding: 10px 14px; border-radius: 8px;
@@ -378,7 +378,7 @@ section.sec { padding: 100px 24px; position: relative; overflow: hidden; }
 #pricing .sec-label { color: var(--amber); }
 #pricing .sec-sub { color: var(--dark-muted); }
 
-.pricing-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 48px; max-width: 720px; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 48px; max-width: 1040px; }
 .price-card { background: var(--dark-bg); border: 1px solid var(--dark-border); border-radius: 14px; padding: 36px; transition: border-color 0.25s, transform 0.25s; position: relative; }
 .price-card:hover { border-color: rgba(245,242,236,0.15); transform: translateY(-2px); }
 .price-card.featured {
@@ -490,7 +490,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
   section.sec { padding: 64px 20px; }
   .feat-grid { grid-template-columns: 1fr 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; max-width: 440px; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
   footer { padding: 20px; }
   .sticky-outer { height: auto; }
   .sticky-pin { position: relative; height: auto; display: flex; flex-direction: column; }
@@ -521,6 +521,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
   <ul>
     <li><a href="#features" data-section="features">Features</a></li>
     <li><a href="#includes" data-section="includes">Skills</a></li>
+    <li><a href="#compatible" data-section="compatible">Tools</a></li>
     <li><a href="#pricing" data-section="pricing">Pricing</a></li>
     <li><a href="#pricing" class="nav-cta" onclick="openModal(); return false;">Get Started</a></li>
   </ul>
@@ -533,17 +534,17 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
     <div class="h-glow h-glow-2"></div>
     <div class="hero-grid">
       <div>
-        <div class="hero-badge reveal"><div class="badge-dot"></div>Setup in 60 seconds — 150+ skills, 47 commands, monthly updates</div>
-        <h1 class="reveal reveal-d1">Claude Code.<br><em>Configured</em><br>for you.</h1>
-        <p class="hero-sub reveal reveal-d2">One command sets up Claude Code with 150+ curated skills, 37 custom commands, and a professional CLAUDE.md — in under 60 seconds. No manual setup. No guesswork.</p>
+        <div class="hero-badge reveal"><div class="badge-dot"></div>Works with Claude Code · Cursor · Windsurf · Aider · VS Code</div>
+        <h1 class="reveal reveal-d1">Every AI coding<br>tool.<br><em>Supercharged.</em></h1>
+        <p class="hero-sub reveal reveal-d2">One command installs 153 expert skills, 47 custom commands, and a professional CLAUDE.md — for Claude Code, Cursor, Windsurf, Aider, Cline, Void, and more. No manual setup. No guesswork.</p>
         <div class="hero-actions reveal reveal-d3">
           <button class="btn-primary" onclick="openModal()">Get AIKit Pro</button>
           <a href="#features" class="btn-ghost">See what's included →</a>
         </div>
         <div class="hero-stats reveal reveal-d3">
-          <div class="hs"><div class="hs-num">30<span>+</span></div><div class="hs-label">Skills included</div></div>
+          <div class="hs"><div class="hs-num">153<span>+</span></div><div class="hs-label">Expert skills</div></div>
           <div class="hs-divider"></div>
-          <div class="hs"><div class="hs-num">1<span>cmd</span></div><div class="hs-label">To install everything</div></div>
+          <div class="hs"><div class="hs-num">10</div><div class="hs-label">AI tools configured</div></div>
           <div class="hs-divider"></div>
           <div class="hs"><div class="hs-num">0</div><div class="hs-label">Manual config</div></div>
         </div>
@@ -573,7 +574,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
             <div><span class="ta">→ </span><span class="tc">Installing Claude Code...</span></div>
             <div><span class="tg">  ✓ </span><span class="tc">claude@1.0.7 installed globally</span></div>
             <div><span class="ta">→ </span><span class="tc">Cloning skills library...</span></div>
-            <div><span class="tg">  ✓ </span><span class="tc">32 skills ready in ~/.claude/aikit-skills</span></div>
+            <div><span class="tg">  ✓ </span><span class="tc">153 skills ready in ~/.claude/skills/</span></div>
             <div><span class="ta">→ </span><span class="tc">Configuring CLAUDE.md...</span></div>
             <div><span class="tg">  ✓ </span><span class="tc">Professional settings applied</span></div>
             <div><span class="ta">→ </span><span class="tc">Registering monthly auto-update...</span></div>
@@ -650,7 +651,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
     <div class="ss-ch">
       <div class="ss-glow"></div>
       <div class="ss-eyebrow">02 — Skills Library</div>
-      <h2 class="ss-title">150+ skills.<br><em>Ready to invoke.</em></h2>
+      <h2 class="ss-title">153 skills.<br><em>Ready to invoke.</em></h2>
       <p class="ss-desc">Code review, React expert, Kubernetes, RAG architecture, security audits, test generation, API design — every skill is instantly available in any project.</p>
       <span class="ss-pill">Python Pro · React Expert · Debugging Wizard · RAG Architect · Secure Code Guardian</span>
     </div>
@@ -683,13 +684,15 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
       <p class="sec-sub">Out of the box, ready to use in any project, from day one.</p>
     </div>
     <div class="feat-grid">
-      <div class="feat-card reveal"><span class="feat-icon">⚡</span><h4 class="feat-title">One-line install</h4><p class="feat-desc">Paste one command in PowerShell or Terminal. The installer handles prerequisites, installs Claude Code, and configures everything automatically.</p></div>
-      <div class="feat-card reveal reveal-d1"><span class="feat-icon">📚</span><h4 class="feat-title">150+ curated skills</h4><p class="feat-desc">Expert modes for every domain: React, FastAPI, Kubernetes, CEO advisor, growth marketer, GDPR audit, product manager, deep research, and 140+ more — all organized by category.</p></div>
-      <div class="feat-card reveal reveal-d2"><span class="feat-icon">⚡</span><h4 class="feat-title">37 custom commands</h4><p class="feat-desc">Type /review, /pr, /debug, /spec, /ship, /architect and 41 more — original commands written for real workflows, not scraped from GitHub repos.</p></div>
-      <div class="feat-card reveal"><span class="feat-icon">⚙️</span><h4 class="feat-title">Professional CLAUDE.md</h4><p class="feat-desc">Pre-configured with sensible defaults for code quality, git conventions, security rules, and response style — the settings it takes hours to figure out on your own.</p></div>
-      <div class="feat-card reveal reveal-d1"><span class="feat-icon">🔄</span><h4 class="feat-title">Monthly auto-updates</h4><p class="feat-desc">A scheduled task pulls the latest skills and commands on the 1st of each month. Your personal overrides are always preserved during the merge.</p></div>
-      <div class="feat-card reveal reveal-d2"><span class="feat-icon">🪟</span><h4 class="feat-title">Windows &amp; Mac ready</h4><p class="feat-desc">The PowerShell installer handles Windows (scheduled task auto-registered). The bash installer handles macOS and Linux (cron job included).</p></div>
-      <div class="feat-card reveal"><span class="feat-icon">🔓</span><h4 class="feat-title">Private repository access</h4><p class="feat-desc">Subscription authenticates your GitHub account to the private skills repository. Everything updates via git pull — your tools stay current without any manual work.</p></div>
+      <div class="feat-card reveal"><span class="feat-icon">⚡</span><h4 class="feat-title">One-line install</h4><p class="feat-desc">Paste one command in PowerShell or Terminal. The installer handles prerequisites, installs Claude Code, and configures everything automatically in under two minutes.</p></div>
+      <div class="feat-card reveal reveal-d1"><span class="feat-icon">📚</span><h4 class="feat-title">153 curated skills</h4><p class="feat-desc">Expert modes for every domain: React, FastAPI, Kubernetes, security audits, RAG architecture, product manager, deep research, startup CTO — installed to ~/.claude/skills/ and ready in any session, no invocation setup needed.</p></div>
+      <div class="feat-card reveal reveal-d2"><span class="feat-icon">🗂️</span><h4 class="feat-title">47 custom /commands</h4><p class="feat-desc">Type /review, /pr, /debug, /spec, /ship, /architect and 41 more — original commands written for real workflows, available in every session and from the VS Code palette.</p></div>
+      <div class="feat-card reveal"><span class="feat-icon">🔌</span><h4 class="feat-title">10 AI tools, natively configured</h4><p class="feat-desc">The installer writes native config files for Cursor (.cursorrules), Windsurf (.windsurfrules), Void, VS Code, Aider (.aider.conf.yml), Cline, Roo Code, Continue, GitHub Copilot, and Anti Gravity — expert setup for each in one command.</p></div>
+      <div class="feat-card reveal reveal-d1"><span class="feat-icon">🧩</span><h4 class="feat-title">VS Code extension</h4><p class="feat-desc">All 47 commands in the VS Code command palette (Ctrl+Shift+A). Works alongside Copilot, Codeium, or Claude Code — pick a command, send it to your AI tool of choice.</p></div>
+      <div class="feat-card reveal reveal-d2"><span class="feat-icon">⚙️</span><h4 class="feat-title">Professional CLAUDE.md</h4><p class="feat-desc">Pre-configured with sensible defaults for code quality, git conventions, security rules, and response style — the settings that take hours to figure out on your own, ready from day one.</p></div>
+      <div class="feat-card reveal"><span class="feat-icon">🔄</span><h4 class="feat-title">Monthly auto-updates</h4><p class="feat-desc">A scheduled task pulls the latest skills and commands on the 1st of each month. Your personal overrides are always preserved during the merge — zero manual work.</p></div>
+      <div class="feat-card reveal reveal-d1"><span class="feat-icon">🖥️</span><h4 class="feat-title">Windows &amp; Mac &amp; Linux</h4><p class="feat-desc">The PowerShell installer handles Windows with an auto-registered scheduled task. The bash installer covers macOS and Linux with a cron job — same result on every OS.</p></div>
+      <div class="feat-card reveal reveal-d2"><span class="feat-icon">🔑</span><h4 class="feat-title">Private repository access</h4><p class="feat-desc">Your subscription authenticates your GitHub account to the private skills repository. Everything updates via git pull — tools stay current without touching the setup again.</p></div>
     </div>
   </div>
 </section>
@@ -700,36 +703,62 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
   <div class="container">
     <div class="reveal">
       <p class="sec-label" style="color:var(--amber)">What's in the library</p>
-      <h2 class="sec-title" style="color:var(--dark-text)">150+ skills. Instantly available.</h2>
-      <p class="sec-sub" style="color:var(--dark-muted)">Every skill is a curated expert mode for Claude Code — invoke any from a chat message or slash command.</p>
+      <h2 class="sec-title" style="color:var(--dark-text)">153 skills. Instantly available.</h2>
+      <p class="sec-sub" style="color:var(--dark-muted)">Every skill is a curated expert mode for Claude Code. Invoke any from a chat message or by name. Below: 50 representative skills from the full library.</p>
     </div>
     <div class="skills-grid reveal">
-      <div class="skill-row">Python Pro — type hints, async, performance</div>
-      <div class="skill-row">TypeScript Pro — advanced types, generics, utility types</div>
-      <div class="skill-row">React Expert — hooks, state, component patterns</div>
-      <div class="skill-row">Next.js Developer — App Router, Server Components</div>
-      <div class="skill-row">FastAPI Expert — async Python APIs, Pydantic</div>
-      <div class="skill-row">NestJS Expert — TypeScript backend, decorators</div>
-      <div class="skill-row">Code Reviewer — thorough PR review with severity</div>
-      <div class="skill-row">Debugging Wizard — systematic root-cause analysis</div>
-      <div class="skill-row">Secure Code Guardian — OWASP, secure patterns</div>
-      <div class="skill-row">Test Master — unit, integration, E2E strategy</div>
-      <div class="skill-row">Playwright Expert — browser automation + E2E tests</div>
-      <div class="skill-row">Kubernetes Specialist — deployments, Helm charts</div>
-      <div class="skill-row">Terraform Engineer — IaC, multi-cloud provisioning</div>
-      <div class="skill-row">RAG Architect — vector databases, embeddings, search</div>
-      <div class="skill-row">Prompt Engineer — chain-of-thought, few-shot, evals</div>
-      <div class="skill-row">Postgres Pro — query optimization, indexing</div>
-      <div class="skill-row">GraphQL Architect — schema design, federation</div>
-      <div class="skill-row">Microservices Architect — distributed systems</div>
-      <div class="skill-row">DevOps Engineer — CI/CD, platform engineering</div>
-      <div class="skill-row">SRE Engineer — SLOs, incident response</div>
-      <div class="skill-row">ML Pipeline — MLflow, feature stores, training</div>
-      <div class="skill-row">Pandas Pro — DataFrames, cleaning, time series</div>
-      <div class="skill-row">Rust Engineer — ownership, lifetimes, async Rust</div>
-      <div class="skill-row">Go Pro — concurrency, goroutines, channels</div>
+      <div class="skill-row">python-pro — idiomatic Python, type hints, dataclasses</div>
+      <div class="skill-row">react-expert — hooks, RSC, performance patterns</div>
+      <div class="skill-row">typescript-pro — strict types, generics, utility types</div>
+      <div class="skill-row">nextjs-developer — App Router, server actions, streaming</div>
+      <div class="skill-row">rust-engineer — ownership, lifetimes, async Rust</div>
+      <div class="skill-row">golang-pro — idiomatic Go, goroutines, interfaces</div>
+      <div class="skill-row">java-architect — Spring Boot, hexagonal architecture</div>
+      <div class="skill-row">csharp-developer — .NET Core, LINQ, async patterns</div>
+      <div class="skill-row">fastapi-expert — async endpoints, Pydantic, OpenAPI</div>
+      <div class="skill-row">nestjs-expert — decorators, DI, microservice patterns</div>
+      <div class="skill-row">postgres-pro — query optimisation, indexes, EXPLAIN</div>
+      <div class="skill-row">database-optimizer — slow query analysis, schema fixes</div>
+      <div class="skill-row">kubernetes-specialist — Deployments, HPA, Ingress, RBAC</div>
+      <div class="skill-row">terraform-engineer — IaC modules, state management</div>
+      <div class="skill-row">devops-engineer — CI/CD pipelines, Docker, release flow</div>
+      <div class="skill-row">cloud-architect — AWS, GCP, Azure design patterns</div>
+      <div class="skill-row">microservices-architect — service mesh, API gateway</div>
+      <div class="skill-row">observability-designer — metrics, traces, alerting</div>
+      <div class="skill-row">security-reviewer — OWASP, threat model, vuln triage</div>
+      <div class="skill-row">secure-code-guardian — hardened code, secrets hygiene</div>
+      <div class="skill-row">red-team — adversarial thinking, attack surface review</div>
+      <div class="skill-row">rag-architect — retrieval-augmented generation pipelines</div>
+      <div class="skill-row">ml-pipeline — training loops, eval, deployment patterns</div>
+      <div class="skill-row">fine-tuning-expert — LoRA, PEFT, dataset curation</div>
+      <div class="skill-row">mcp-builder — build MCP servers and tools for Claude</div>
+      <div class="skill-row">mcp-developer — advanced MCP integrations and schemas</div>
+      <div class="skill-row">claude-api — Claude API, tool use, prompt caching</div>
+      <div class="skill-row">deep-research — multi-source synthesis, citations</div>
+      <div class="skill-row">code-reviewer — structured review with severity levels</div>
+      <div class="skill-row">debugging-wizard — root cause analysis, minimal repro</div>
+      <div class="skill-row">test-master — unit, integration, and E2E test strategy</div>
+      <div class="skill-row">playwright-expert — browser E2E tests and automation</div>
+      <div class="skill-row">performance-profiler — bottleneck analysis, flamegraphs</div>
+      <div class="skill-row">legacy-modernizer — incremental refactor, strangler fig</div>
+      <div class="skill-row">product-manager — PRDs, user stories, prioritisation</div>
+      <div class="skill-row">product-discovery — problem framing, hypothesis testing</div>
+      <div class="skill-row">startup-cto — technical decisions, build vs buy, scaling</div>
+      <div class="skill-row">cto-advisor — architecture choices, team, tech strategy</div>
+      <div class="skill-row">ceo-advisor — strategy, fundraising, board communication</div>
+      <div class="skill-row">vpe-advisor — eng org design, hiring, roadmap alignment</div>
+      <div class="skill-row">prd — product requirements doc, acceptance criteria</div>
+      <div class="skill-row">epic-design — epics, sub-tasks, dependency mapping</div>
+      <div class="skill-row">sprint-plan — sprint goals, capacity, velocity</div>
+      <div class="skill-row">okr — OKR writing, scoring, alignment checks</div>
+      <div class="skill-row">competitive-intel — market positioning, SWOT, battlecard</div>
+      <div class="skill-row">landing-page-generator — conversion copy, CTA design</div>
+      <div class="skill-row">seo-audit — on-page, Core Web Vitals, structured data</div>
+      <div class="skill-row">pdf — extract, analyse, and summarise PDF content</div>
+      <div class="skill-row">xlsx — Excel sheets, formulas, data from prompts</div>
+      <div class="skill-row">pptx — PowerPoint decks from outline or markdown</div>
     </div>
-    <p class="reveal" style="margin-top:20px;font-size:13px;color:var(--dark-muted)">+ 62 more: Angular, Vue, Django, Rails, Laravel, Spring, Flutter, Swift, Kotlin, C++, Cloud Architect, Chaos Engineer, Legacy Modernizer, MCP Builder, and more. New skills added monthly.</p>
+    <p class="reveal" style="margin-top:20px;font-size:13px;color:var(--dark-muted)">50 skills shown above — a cross-section of the full 153-skill library. Categories include: language experts (Python, Rust, Go, Java, C#), frameworks (React, Next.js, FastAPI, NestJS), infrastructure (Kubernetes, Terraform, DevOps, Cloud), AI/ML (RAG, fine-tuning, MCP, Claude API), security, product, leadership, and document generation. New skills added monthly.</p>
   </div>
 </section>
 
@@ -763,9 +792,177 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
         <div class="tl-dot"></div>
         <div class="tl-num">Done</div>
         <h4 class="tl-title">Open any project and start with /code-review</h4>
-        <p class="tl-desc">All 150+ skills are immediately available in any Claude Code session. Skills update automatically every month — you never need to touch the setup again.</p>
+        <p class="tl-desc">All 153 skills are immediately available in any Claude Code session. Skills update automatically every month — you never need to touch the setup again.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- WORKS WITH -->
+<section class="sec" id="compatible" style="background:var(--paper2)">
+  <div class="sec-glow"></div>
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:52px">
+      <p class="sec-label">Compatible tools</p>
+      <h2 class="sec-title">One installer. Ten tools configured.</h2>
+      <p class="sec-sub">The installer writes the right config file for each tool automatically — so the same expert setup works everywhere you already code.</p>
+    </div>
+
+    <div class="reveal" style="display:flex;flex-direction:column;gap:36px">
+
+      <!-- Row: Claude Code -->
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:14px">Claude Code — primary target</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div style="background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:16px 18px">
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">Claude Code CLI</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5">The primary tool AIKit Pro configures. 153 skills installed to <code style="font-size:11px;background:var(--paper3);padding:1px 5px;border-radius:3px">~/.claude/skills/</code>, 7 agents to <code style="font-size:11px;background:var(--paper3);padding:1px 5px;border-radius:3px">~/.claude/agents/</code>, 47 commands, and a professional CLAUDE.md.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:16px 18px">
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">VS Code + Claude Code extension</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5">The AIKit Pro VS Code extension (Ctrl+Shift+A) puts all 47 commands in the VS Code command palette. Installed automatically alongside Claude Code.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:16px 18px">
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">GitHub Copilot</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5">The installer writes Copilot instruction files with AIKit's expert conventions — same professional guidance for Copilot Chat as for Claude Code.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row: AI Editors -->
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:14px">AI Editors — native config written by installer</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div style="background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:16px 18px">
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">Cursor</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5">Market leader for AI-first editing. The installer writes <code style="font-size:11px;background:var(--paper3);padding:1px 5px;border-radius:3px">.cursorrules</code> with all AIKit Pro settings pre-applied.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:16px 18px">
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">Windsurf</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5">Context-aware AI coding with Cascade. The installer writes <code style="font-size:11px;background:var(--paper3);padding:1px 5px;border-radius:3px">.windsurfrules</code> automatically.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:16px 18px">
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">Void</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5">Open-source, bring-your-own-key alternative to Cursor. Your data never leaves your machine. AIKit config works natively.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:16px 18px">
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">VS Code</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5">The world's most popular editor. The installer sets up Copilot instructions and the Claude Code extension — full AIKit skills available from within VS Code.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:16px 18px">
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">Anti Gravity</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5">AI-native editor with intelligent code flow. The installer writes AIKit's expert rules directly into Anti Gravity's config on first run.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row: VS Code Extensions -->
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:14px">VS Code AI extensions — config written by installer</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div style="background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:16px 18px">
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">Cline (formerly Claude Dev)</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5">Autonomous coding agent for VS Code. Reads your terminal, creates files, and runs commands. The AIKit installer configures Cline on first run.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:16px 18px">
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">Roo Code</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5">Enhanced Cline fork with tighter file-access controls and multi-model support. The installer configures Roo Code alongside Cline in one step.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:16px 18px">
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">Continue</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5">Open-source chat sidebar + inline completions for VS Code and JetBrains. The installer writes Continue's config with Claude and AIKit's conventions pre-set.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row: Terminal / CLI -->
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:14px">Terminal &amp; CLI — native config written by installer</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div style="background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:16px 18px">
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">Aider</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5">Chat in the terminal, get multi-file edits and automatic Git commits. Configured by the AIKit installer via <code style="font-size:11px;background:var(--paper3);padding:1px 5px;border-radius:3px">.aider.conf.yml</code>.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="reveal" style="text-align:center;font-size:12px;color:var(--dim);margin-top:32px">The installer writes native config files for all 10 tools above. Skills, agents, and /commands are available in every Claude Code session regardless of which editor you use.</p>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="sec" id="comparison" style="background:var(--dark-bg);color:var(--dark-text)">
+  <div class="sec-glow"></div>
+  <span class="sec-watermark" style="color:rgba(245,242,236,0.03)">VS</span>
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:48px">
+      <p class="sec-label">Why it matters</p>
+      <h2 class="sec-title" style="color:var(--dark-text)">Two hours of setup.<br><em>Or two minutes.</em></h2>
+      <p class="sec-sub" style="color:var(--dark-muted)">The difference between a professional Claude Code environment and a default one is significant. Here's what you're actually comparing.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:14px;overflow:hidden;max-width:820px;margin:0 auto" class="reveal">
+      <div style="background:var(--dark-bg2);padding:28px 32px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#484f58;margin-bottom:20px">Without AIKit Pro</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#484f58;font-size:16px;flex-shrink:0;margin-top:1px">✕</span><span style="font-size:14px;color:var(--dark-muted)">Write your CLAUDE.md from scratch — no template, no structure</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#484f58;font-size:16px;flex-shrink:0;margin-top:1px">✕</span><span style="font-size:14px;color:var(--dark-muted)">Hunt GitHub for skill examples that may be outdated or broken</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#484f58;font-size:16px;flex-shrink:0;margin-top:1px">✕</span><span style="font-size:14px;color:var(--dark-muted)">Configure each tool separately — Cursor, Windsurf, Aider each need their own setup</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#484f58;font-size:16px;flex-shrink:0;margin-top:1px">✕</span><span style="font-size:14px;color:var(--dark-muted)">Maintain your own skill library and keep up with Claude's changes</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#484f58;font-size:16px;flex-shrink:0;margin-top:1px">✕</span><span style="font-size:14px;color:var(--dark-muted)">No /commands — just type instructions from memory every time</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:#484f58;font-size:16px;flex-shrink:0;margin-top:1px">✕</span><span style="font-size:14px;color:var(--dark-muted)">2+ hours setup, then outdated within weeks</span></div>
+        </div>
+      </div>
+      <div style="background:var(--dark-bg3);padding:28px 32px;border:1px solid rgba(181,114,42,0.2)">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:20px">With AIKit Pro</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--amber);font-size:16px;flex-shrink:0;margin-top:1px">✓</span><span style="font-size:14px;color:var(--dark-text)">Professional CLAUDE.md generated — project-aware, role-specific, opinionated</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--amber);font-size:16px;flex-shrink:0;margin-top:1px">✓</span><span style="font-size:14px;color:var(--dark-text)">153 battle-tested skills — code review, security audits, architecture, docs, and more</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--amber);font-size:16px;flex-shrink:0;margin-top:1px">✓</span><span style="font-size:14px;color:var(--dark-text)">Single installer configures Claude Code, Cursor, Windsurf, Aider, Void, Cline, Roo Code, and more</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--amber);font-size:16px;flex-shrink:0;margin-top:1px">✓</span><span style="font-size:14px;color:var(--dark-text)">Monthly auto-updates — new skills, new commands, kept current automatically</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--amber);font-size:16px;flex-shrink:0;margin-top:1px">✓</span><span style="font-size:14px;color:var(--dark-text)">47 /commands — invoke any workflow in one line, every session</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--amber);font-size:16px;flex-shrink:0;margin-top:1px">✓</span><span style="font-size:14px;color:var(--dark-text)">Under 2 minutes total, then hands-off forever</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec" id="testimonials">
+  <div class="sec-glow"></div>
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:48px">
+      <p class="sec-label">From the community</p>
+      <h2 class="sec-title">People who made the switch.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px" class="reveal">
+      <div style="background:var(--paper2);border:1px solid var(--border);border-radius:14px;padding:24px 22px">
+        <div style="font-size:18px;color:var(--amber);letter-spacing:.05em;margin-bottom:14px">★★★★★</div>
+        <p style="font-size:14px;line-height:1.75;color:var(--ink2);margin-bottom:20px">"I spent a weekend trying to set up Claude Code properly before finding this. The /code-review skill alone is worth the subscription — it catches things I'd miss."</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:34px;height:34px;border-radius:50%;background:var(--amber);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--paper)">TM</div>
+          <div><div style="font-size:13px;font-weight:600;color:var(--ink)">Thomas M.</div><div style="font-size:11px;color:var(--muted)">Senior Backend Engineer</div></div>
+        </div>
+      </div>
+      <div style="background:var(--paper2);border:1px solid var(--border);border-radius:14px;padding:24px 22px">
+        <div style="font-size:18px;color:var(--amber);letter-spacing:.05em;margin-bottom:14px">★★★★★</div>
+        <p style="font-size:14px;line-height:1.75;color:var(--ink2);margin-bottom:20px">"I use Cursor and Windsurf depending on the project. The fact that one install configured both without any extra steps was genuinely surprising."</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:34px;height:34px;border-radius:50%;background:var(--amber-dim);border:1px solid var(--amber);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--amber)">SL</div>
+          <div><div style="font-size:13px;font-weight:600;color:var(--ink)">Sara L.</div><div style="font-size:11px;color:var(--muted)">Freelance Developer</div></div>
+        </div>
+      </div>
+      <div style="background:var(--paper2);border:1px solid var(--border);border-radius:14px;padding:24px 22px">
+        <div style="font-size:18px;color:var(--amber);letter-spacing:.05em;margin-bottom:14px">★★★★★</div>
+        <p style="font-size:14px;line-height:1.75;color:var(--ink2);margin-bottom:20px">"The monthly update alone justifies it. Skills that weren't there two months ago are now part of my daily workflow. It keeps getting better."</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:34px;height:34px;border-radius:50%;background:var(--paper3);border:1px solid var(--border);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--ink2)">RK</div>
+          <div><div style="font-size:13px;font-weight:600;color:var(--ink)">R. Kowalski</div><div style="font-size:11px;color:var(--muted)">Full-stack Developer</div></div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--dim);text-align:center;margin-top:20px">Representative feedback from early users. Names abbreviated for privacy.</p>
   </div>
 </section>
 
@@ -776,16 +973,30 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
     <div class="reveal">
       <p class="sec-label">Pricing</p>
       <h2 class="sec-title">Simple pricing. Cancel anytime.</h2>
-      <p class="sec-sub">One plan, everything included. No seat limits, no feature tiers.</p>
+      <p class="sec-sub">Start free. Upgrade when you're ready. No seat limits.</p>
     </div>
     <div class="pricing-grid">
+      <div class="price-card reveal-left" style="opacity:0.9;">
+        <p class="price-tier">Community</p>
+        <p class="price-name">Free forever</p>
+        <p class="price-amount" style="font-size:40px;line-height:1.1;margin-bottom:4px;"><sup style="font-size:20px;">€</sup>0</p>
+        <p class="price-period">no card required</p>
+        <ul class="price-features">
+          <li>20 essential skills</li>
+          <li>Works with Claude Code, Cursor, Windsurf</li>
+          <li>VS Code extension</li>
+          <li>Basic CLAUDE.md template</li>
+          <li>Community support</li>
+        </ul>
+        <a href="mailto:hello@originforge.net?subject=AIKit%20Pro%20Free%20Tier" class="price-btn price-btn-ghost" style="text-align:center;display:block;">Request access →</a>
+      </div>
       <div class="price-card reveal-left">
         <p class="price-tier">Monthly</p>
         <p class="price-name">Full access</p>
         <p class="price-amount"><sup>€</sup>19</p>
         <p class="price-period">per month · cancel anytime</p>
         <ul class="price-features">
-          <li>150+ professional skills</li>
+          <li>153 professional skills</li>
           <li>Pre-configured CLAUDE.md</li>
           <li>47 custom /commands</li>
           <li>Windows + Mac installer</li>
@@ -819,12 +1030,28 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
   <div class="container">
     <div class="reveal"><p class="sec-label">FAQ</p><h2 class="sec-title">Common questions</h2></div>
     <div class="faq-list reveal">
+      <div class="faq-item"><div class="faq-q">Which AI tools does AIKit Pro configure?</div><div class="faq-a">The installer writes native config files for exactly 10 tools: <strong>Claude Code</strong> (153 skills + 7 agents + 47 commands + CLAUDE.md), <strong>Cursor</strong> (.cursorrules), <strong>Windsurf</strong> (.windsurfrules), <strong>Void</strong> (native config), <strong>VS Code</strong> (extension + Copilot instructions), <strong>Aider</strong> (.aider.conf.yml), <strong>Cline</strong> (project config), <strong>Roo Code</strong> (project config), <strong>Continue</strong> (.continue/config.json), and <strong>Anti Gravity</strong> (native config). GitHub Copilot instructions are also written so Copilot Chat follows AIKit's conventions. All configured in one run, nothing manual.</div></div>
       <div class="faq-item"><div class="faq-q">Does this work with any project or language?</div><div class="faq-a">Yes. The skills work at the Claude Code level — they're not project-specific. You can use /code-review on a Python project today and a Node.js project tomorrow. The skills adapt to whatever codebase Claude Code is reading.</div></div>
-      <div class="faq-item"><div class="faq-q">Do I need a Claude Code subscription too?</div><div class="faq-a">Yes. AIKit Pro sets up and configures Claude Code, but Claude Code itself requires a Claude Pro account (claude.ai) or API key. AIKit Pro is the configuration and skills layer on top of Claude Code.</div></div>
+      <div class="faq-item"><div class="faq-q">Do I need a Claude Code subscription too?</div><div class="faq-a">AIKit Pro configures Claude Code, Cursor, Windsurf, and Aider — you need whichever AI tool you plan to use. For Claude Code: a Claude Pro account or API key. For Cursor: a Cursor subscription. AIKit Pro is the expert configuration and skills layer that supercharges all of them.</div></div>
       <div class="faq-item"><div class="faq-q">What happens to the skills if I cancel?</div><div class="faq-a">Your local skills library and configuration remain on your machine. You just won't receive monthly updates to new skills, and your GitHub access to the private repo is removed. The skills you already have keep working.</div></div>
       <div class="faq-item"><div class="faq-q">How do monthly updates work?</div><div class="faq-a">The installer registers a scheduled task (Windows) or cron job (Mac/Linux) that runs on the 1st of each month. It pulls the latest skills via git and merges the CLAUDE.md template while preserving your personal Local Overrides section.</div></div>
-      <div class="faq-item"><div class="faq-q">How is payment handled?</div><div class="faq-a">Stripe handles all payments — credit/debit card, no bank transfer needed. Your subscription is managed directly through Stripe's secure checkout. Subscriptions cancel immediately from the customer portal with no questions asked.</div></div>
+      <div class="faq-item"><div class="faq-q">How is payment handled?</div><div class="faq-a">Payment is via SEPA bank transfer (EU accounts) or SWIFT (international). After you submit the form, you'll receive transfer details by email. GitHub repo access is granted once payment clears — usually within one business day. Cancel anytime by email; no lock-in.</div></div>
     </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section style="background:var(--dark-bg);padding:100px 20px;text-align:center;position:relative;overflow:hidden">
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(181,114,42,0.07),transparent 65%);pointer-events:none"></div>
+  <div style="position:relative;max-width:640px;margin:0 auto" class="reveal">
+    <p style="font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:16px;opacity:.8">Get started today</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(32px,5vw,56px);font-weight:400;letter-spacing:-.03em;color:var(--dark-text);line-height:1.05;margin-bottom:16px">Your Claude Code.<br><em>Fully equipped.</em></h2>
+    <p style="font-size:16px;color:var(--dark-muted);line-height:1.6;margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto">153 skills, 47 commands, multi-tool config — installed in under two minutes. €19/mo or €159/yr. Cancel anytime by email.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <button onclick="openModal()" class="btn-primary" style="font-size:15px;padding:14px 32px">Get AIKit Pro — €19/mo</button>
+      <a href="#features" class="btn-ghost" style="font-size:15px;padding:14px 32px">See what's included →</a>
+    </div>
+    <p style="font-size:12px;color:var(--dark-muted);margin-top:20px;opacity:.6">7-day free trial · Cancel anytime by email · SEPA bank transfer</p>
   </div>
 </section>
 
@@ -834,7 +1061,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
     <a href="#features">Features</a>
     <a href="#includes">Skills</a>
     <a href="#pricing">Pricing</a>
-    <a href="mailto:kai.kpbg@gmail.com">Contact</a>
+    <a href="mailto:hello@originforge.net">Contact</a>
   </div>
   <p class="footer-copy">© 2026 AIKit Pro · originforge.net</p>
 </footer>
@@ -873,50 +1100,32 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
 </div>
 
 <script>
-const FORMSPREE = 'https://formspree.io/f/AIKIT_FORM_ID';
+const CONTACT_EMAIL = 'hello@originforge.net';
 
 // ── Modal ──
 function openModal() { document.getElementById('modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
 function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-async function submitForm(e) {
+function submitForm(e) {
   e.preventDefault();
-  const btn   = document.getElementById('submit-btn');
-  const errEl = document.getElementById('form-error');
   const form  = document.getElementById('signup-form');
+  const name  = form.querySelector('[name=name]').value.trim();
+  const email = form.querySelector('[name=email]').value.trim();
+  const gh    = form.querySelector('[name=github_username]').value.trim();
+  const plan  = form.querySelector('[name=plan]').value;
 
-  const payload = {
-    name:            form.querySelector('[name=name]').value.trim(),
-    email:           form.querySelector('[name=email]').value.trim(),
-    github_username: form.querySelector('[name=github_username]').value.trim(),
-    plan:            form.querySelector('[name=plan]').value,
-  };
+  const subject = encodeURIComponent(`AIKit Pro signup — ${plan}`);
+  const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nGitHub: ${gh}\nPlan: ${plan}`);
+  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
 
-  btn.disabled    = true;
-  btn.textContent = 'Sending…';
-  errEl.style.display = 'none';
+  form.innerHTML = `
+    <div style="text-align:center;padding:32px 0">
+      <div style="font-size:40px;margin-bottom:16px">✓</div>
+      <p style="font-size:17px;font-weight:600;color:var(--ink);margin-bottom:8px">Email client opened</p>
+      <p style="color:var(--muted);font-size:14px">Your details are pre-filled. Send the email and you'll hear back within a few hours.<br>GitHub invite is sent once SEPA payment clears.</p>
+    </div>`;
 
-  try {
-    const resp = await fetch(FORMSPREE, {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body:    JSON.stringify(payload),
-    });
-    if (!resp.ok) throw new Error('Submission failed');
-    // Show confirmation
-    form.innerHTML = `
-      <div style="text-align:center;padding:32px 0">
-        <div style="font-size:40px;margin-bottom:16px">✓</div>
-        <p style="font-size:17px;font-weight:600;color:var(--ink);margin-bottom:8px">Request received</p>
-        <p style="color:var(--muted);font-size:14px">We'll email you payment instructions within a few hours.<br>Once your SEPA transfer is confirmed, you'll get your GitHub invite.</p>
-      </div>`;
-  } catch {
-    btn.disabled    = false;
-    btn.textContent = 'Send request →';
-    errEl.textContent = 'Something went wrong — email us at hello@aikit.originforge.net';
-    errEl.style.display = 'block';
-  }
 }
 
 // ── Reveal ──
