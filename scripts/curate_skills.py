@@ -9,37 +9,62 @@ Each source is a dict with a 'type' and source-specific config.
 
 import asyncio
 import hashlib
+import io
 import json
 import os
+import re
 import sys
 from datetime import datetime
 from pathlib import Path
 
 import httpx
 
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+
 SKILLS_DIR = Path(__file__).parent.parent / "skills"
 DRY_RUN    = os.environ.get("DRY_RUN", "false").lower() == "true"
 
 
 # ── Skill Sources ─────────────────────────────────────────────────────────────
-# Add new sources here. 'type' determines the fetch strategy.
+# Each source fetches content from an upstream URL and stores it in skills/.
+# 'type' determines the fetch strategy.
+# Static skills (agent_researcher.md etc.) are NOT listed here — they ship
+# directly in skills/claude/ and are never overwritten by the curator.
 
 SKILL_SOURCES = [
+    # Claude Code official README
     {
         "type":     "github_raw",
-        "name":     "claude-code-guide",
-        "filename": "claude_code_guide.md",
+        "name":     "claude-code-readme",
+        "filename": "claude_code_readme.md",
         "url":      "https://raw.githubusercontent.com/anthropics/claude-code/main/README.md",
-        "dest":     "claude/",
+        "dest":     "reference/",
     },
-    # Add more sources:
-    # {
-    #     "type":     "github_release",
-    #     "name":     "custom-skill",
-    #     "repo":     "owner/repo",
-    #     "asset":    "skills.tar.gz",
-    #     "dest":     "claude/",
-    # },
+    # Claude Code CHANGELOG — pick up new model IDs, flag names, command changes
+    {
+        "type":     "github_raw",
+        "name":     "claude-code-changelog",
+        "filename": "claude_code_changelog.md",
+        "url":      "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
+        "dest":     "reference/",
+    },
+    # MCP servers list from the official Model Context Protocol repo
+    {
+        "type":     "github_raw",
+        "name":     "mcp-servers-list",
+        "filename": "mcp_servers.md",
+        "url":      "https://raw.githubusercontent.com/modelcontextprotocol/servers/main/README.md",
+        "dest":     "reference/",
+    },
+    # Anthropic cookbook — recipes and patterns for building with Claude
+    {
+        "type":     "github_raw",
+        "name":     "anthropic-cookbook",
+        "filename": "anthropic_cookbook.md",
+        "url":      "https://raw.githubusercontent.com/anthropics/anthropic-cookbook/main/README.md",
+        "dest":     "reference/",
+    },
 ]
 
 
@@ -51,6 +76,32 @@ async def fetch_github_raw(client: httpx.AsyncClient, source: dict) -> str | Non
         return resp.text
     print(f"  ✗ Failed to fetch {source['name']}: {resp.status_code}")
     return None
+
+
+async def fetch_github_releases(client: httpx.AsyncClient, source: dict) -> str | None:
+    """Fetch the latest N releases from GitHub API and format as markdown."""
+    repo = source["repo"]
+    n    = source.get("count", 5)
+    url  = f"https://api.github.com/repos/{repo}/releases?per_page={n}"
+    headers = {"Accept": "application/vnd.github+json"}
+    token = os.environ.get("ANTHROPIC_DOCS_TOKEN") or os.environ.get("GITHUB_TOKEN")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    resp = await client.get(url, headers=headers, follow_redirects=True)
+    if resp.status_code != 200:
+        print(f"  ✗ Failed to fetch releases for {repo}: {resp.status_code}")
+        return None
+    releases = resp.json()
+    lines = [f"# {source['name']} — Recent Releases\n"]
+    for r in releases:
+        tag     = r.get("tag_name", "")
+        name    = r.get("name") or tag
+        date    = (r.get("published_at") or "")[:10]
+        body    = (r.get("body") or "").strip()
+        lines.append(f"## {name} ({date})\n")
+        if body:
+            lines.append(body + "\n")
+    return "\n".join(lines)
 
 
 # ── Utilities ─────────────────────────────────────────────────────────────────
@@ -74,6 +125,17 @@ def write_skill(path: Path, content: str) -> bool:
     return True
 
 
+def list_static_skills() -> list[dict]:
+    """Return metadata for all hand-authored skills in skills/claude/."""
+    static_dir = SKILLS_DIR / "claude"
+    if not static_dir.exists():
+        return []
+    skills = []
+    for f in sorted(static_dir.glob("*.md")):
+        skills.append({"name": f.stem, "path": str(f.relative_to(SKILLS_DIR))})
+    return skills
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 async def main():
@@ -90,6 +152,8 @@ async def main():
             content = None
             if source["type"] == "github_raw":
                 content = await fetch_github_raw(client, source)
+            elif source["type"] == "github_releases":
+                content = await fetch_github_releases(client, source)
 
             if content is None:
                 continue
@@ -104,13 +168,24 @@ async def main():
                 print("no change")
 
     print("─" * 40)
-    print(f"Done. {updated_count} skill(s) updated.")
+
+    # Report static skills that ship with AIKit
+    static = list_static_skills()
+    if static:
+        print(f"Static skills ({len(static)}):")
+        for s in static:
+            print(f"  ✓ {s['name']}  ({s['path']})")
+        print("─" * 40)
+
+    print(f"Done. {updated_count} reference skill(s) updated.")
 
     # Write update manifest
     manifest = {
-        "last_updated": datetime.utcnow().isoformat() + "Z",
-        "updated_count": updated_count,
-        "dry_run": DRY_RUN,
+        "last_updated":   datetime.utcnow().isoformat() + "Z",
+        "updated_count":  updated_count,
+        "dry_run":        DRY_RUN,
+        "static_skills":  static,
+        "sources":        [s["name"] for s in SKILL_SOURCES],
     }
     if not DRY_RUN:
         (SKILLS_DIR / "manifest.json").write_text(json.dumps(manifest, indent=2))
