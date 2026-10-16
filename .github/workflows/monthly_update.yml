@@ -43,7 +43,8 @@ jobs:
       - name: Check for changes
         id: changes
         run: |
-          git diff --quiet skills/ && echo "changed=false" >> "$GITHUB_OUTPUT" \
+          git add skills/
+          git diff --cached --quiet && echo "changed=false" >> "$GITHUB_OUTPUT" \
             || echo "changed=true" >> "$GITHUB_OUTPUT"
 
       - name: Commit updated skills
@@ -51,7 +52,6 @@ jobs:
         run: |
           git config user.name  "AIKit Bot"
           git config user.email "bot@aikit.originforge.net"
-          git add skills/
           git commit -m "chore: monthly skills update $(date '+%Y-%m')"
           git push
 
