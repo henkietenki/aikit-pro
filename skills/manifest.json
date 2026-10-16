@@ -1,0 +1,12 @@
+{
+  "last_updated": "2026-10-16T10:21:31.615815Z",
+  "updated_count": 4,
+  "dry_run": false,
+  "static_skills": [],
+  "sources": [
+    "claude-code-readme",
+    "claude-code-changelog",
+    "mcp-servers-list",
+    "anthropic-cookbook"
+  ]
+}
